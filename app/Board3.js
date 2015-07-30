@@ -1,16 +1,16 @@
 
 const { Input, Button } = ReactBootstrap;
 
-export default class Board extends React.Component {
+export default class Board3 extends React.Component {
 
     componentWillMount() {
-        // build the urlssss
+        // build the urlss
     }
 
     render() {
         return (
             <div className="container">
-                <Button>Testo</Button><Input type="text" />
+                <Button>Testo1</Button><Input type="text" />
             </div>
         );
     }

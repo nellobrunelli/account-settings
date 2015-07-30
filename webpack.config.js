@@ -22,7 +22,10 @@ module.exports = {
         loaders: [{
             test: /\.jsx?$/,
             exclude: /node_modules[\/\\]/,
-            loader: 'babel-loader?optional[]=es7.decorators'
+            loader: 'babel-loader',
+            query: {
+              stage: 0
+            }
         }, {
             test: /\.css$/,
             loader: 'style!css'
@@ -46,11 +49,11 @@ module.exports = {
             }
         }),
         new webpack.ProvidePlugin({
-            React: 'react/addons', 
+            React: 'react/addons',
             ReactBootstrap: 'react-bootstrap'
         })
     ],
-    
+
     resolve: {
         extensions: ['', '.js', '.jsx']
     }

@@ -1,5 +1,5 @@
 /* eslint-disable new-cap */
-import Board from './Board';
+import Main from './Main';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-React.render(<Board/>, document.getElementById('app'));
+React.render(<Main />, document.getElementById('app'));
