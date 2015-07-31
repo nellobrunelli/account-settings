@@ -1,6 +1,5 @@
 import axios from 'axios';
 import Board1 from './Board1';
-import ButtonPerson from './ButtonPerson';
 
 export default class Main extends React.Component {
     constructor() {
@@ -9,12 +8,17 @@ export default class Main extends React.Component {
         this.addPerson = this.addPerson.bind(this);
 
         this.state = {
-            persons: []
+            persons: [],
+            roles: [],
+            personsRoles: [],
+            errors: []
         };
     }
 
     componentWillMount() {
         this.getPersons();
+        this.getRoles();
+        this.getPersonsRoles();
     }
 
     addPerson(person) {
@@ -29,19 +33,48 @@ export default class Main extends React.Component {
         axios.get('http://localhost:3000/persons')
         .then(response => {
             this.setState({
-              persons: response.data
+                persons: response.data
             });
         })
-        .catch(function() {
-            console.log('--- there is an error ');
+        .catch(response => {
+            this.setState({
+                errors: response.data
+            });
+        });
+    }
+
+    getRoles() {
+        axios.get('http://localhost:3000/roles')
+        .then(response => {
+            this.setState({
+                roles: response.data
+            });
+        })
+        .catch(response => {
+            this.setState({
+                errors: response.data
+            });
+        });
+    }
+
+    getPersonsRoles() {
+        axios.get('http://localhost:3000/personsRoles')
+        .then(response => {
+            this.setState({
+              personsRoles: response.data
+            });
+        })
+        .catch(response => {
+            this.setState({
+                errors: response.data
+            });
         });
     }
 
     render() {
         return (
-            <div>
-                <Board1 persons={this.state.persons}/>
-                <ButtonPerson handleClick={this.addPerson} />
+            <div id="main">
+                <Board1 persons={this.state.persons} roles={this.state.roles} personsRoles={this.state.personsRoles} />
             </div>
         );
     }

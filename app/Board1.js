@@ -1,17 +1,27 @@
-
-// import Person from './Person';
-// const { Input, Button } = ReactBootstrap;
-
 export default class Board1 extends React.Component {
+
+    // componentWillReceiveProps(nextProps) {
+    //     console.log(nextProps);
+    // }
+
     render() {
         return (
-            <div>{this.props.persons.map((el, id) => {
-                return <span key={id}>{el.name}</span>;
-            })}</div>
+            <div>
+            {this.props.persons.map((el, id) => {
+                return <span key={id}>{el.name}<br /></span>;
+            })}
+
+            {this.props.roles.map((el, id) => {
+                return <span key={id}>{el}<br /></span>;
+            })}
+            </div>
+
         );
     }
 }
 
 Board1.propTypes = {
-    persons: React.PropTypes.array.isRequired
+    persons: React.PropTypes.array.isRequired,
+    roles: React.PropTypes.array.isRequired,
+    personsRoles: React.PropTypes.array.isRequired
 };
