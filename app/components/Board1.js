@@ -4,6 +4,7 @@ export default class Board1 extends React.Component {
     //     console.log(nextProps);
     // }
 
+    // ciao mamma sono sul branch
     render() {
         return (
             <div>
