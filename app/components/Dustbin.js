@@ -16,7 +16,7 @@ const style = {
 
 const dustbinTarget = {
   drop(props, monitor) {
-    props.onDrop(monitor.getItem());
+      props.onDrop(monitor.getItem());
   }
 };
 
@@ -36,17 +36,17 @@ export default class Dustbin extends Component {
   };
 
   render() {
-    const { accepts, isOver, canDrop, connectDropTarget, lastDroppedItem } = this.props;
-    const isActive = isOver && canDrop;
+      const { accepts, isOver, canDrop, connectDropTarget, lastDroppedItem } = this.props;
+      const isActive = isOver && canDrop;
 
-    let backgroundColor = '#222';
-    if (isActive) {
-      backgroundColor = 'darkgreen';
+      let backgroundColor = '#222';
+      if (isActive) {
+          backgroundColor = 'darkgreen';
     } else if (canDrop) {
-      backgroundColor = 'darkkhaki';
+        backgroundColor = 'darkkhaki';
     }
 
-    return connectDropTarget(
+      return connectDropTarget(
       <div style={{ ...style, backgroundColor }}>
 
         {isActive ?

@@ -13,8 +13,8 @@ const style = {
 
 const boxSource = {
   beginDrag(props) {
-    return {
-      name: props.name
+      return {
+        name: props.name
     };
   }
 };
@@ -33,16 +33,16 @@ export default class Box extends Component {
   };
 
   render() {
-    const { name, isDropped, isDragging, connectDragSource } = this.props;
-    const opacity = isDragging ? 0.4 : 1;
+      const { name, isDropped, isDragging, connectDragSource } = this.props;
+      const opacity = isDragging ? 0.4 : 1;
 
-    return connectDragSource(
-      <div style={{ ...style, opacity }}>
-        {isDropped ?
-          <s>{name}</s> :
-          name
-        }
-      </div>
-    );
+      return connectDragSource(
+        <div style={{ ...style, opacity }}>
+          {isDropped ?
+            <s>{name}</s> :
+            name
+          }
+        </div>
+      );
   }
 }
