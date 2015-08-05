@@ -26,6 +26,12 @@ const dustbinTarget = {
   canDrop: monitor.canDrop()
 }))
 export default class Dustbin extends Component {
+
+  // componentWillReceiveProps(nextProps) {
+  //    console.log('Dustbin.js');
+  //    console.log(nextProps);
+  // }
+
   static propTypes = {
     connectDropTarget: PropTypes.func.isRequired,
     isOver: PropTypes.bool.isRequired,
@@ -35,23 +41,29 @@ export default class Dustbin extends Component {
     onDrop: PropTypes.func.isRequired
   };
 
+  // debug
+  // componentDidMount() {
+  //  console.log("");
+  //  console.log(this.props);
+  // }
+
   render() {
-      const { accepts, isOver, canDrop, connectDropTarget, lastDroppedItem } = this.props;
+      const { isOver, canDrop, connectDropTarget, lastDroppedItem } = this.props;
       const isActive = isOver && canDrop;
 
-      let backgroundColor = '#222';
+      let backgroundColor = 'black';
       if (isActive) {
           backgroundColor = 'darkgreen';
-    } else if (canDrop) {
-        backgroundColor = 'darkkhaki';
-    }
+      } else if (canDrop) {
+          backgroundColor = 'darkkhaki';
+      }
 
       return connectDropTarget(
       <div style={{ ...style, backgroundColor }}>
 
         {isActive ?
           'Release to drop' :
-          'This dustbin accepts: ' + accepts.join(', ')
+          'ROLE: ' + this.props.role
         }
 
         {lastDroppedItem &&

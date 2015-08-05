@@ -14,9 +14,10 @@
     }
   ],
   "roles": [
-    "player",
-    "player",
-    "coach",
-    "scout"
+    "PLAYER",
+    "PLAYER",
+    "COACH",
+    "SCOUT",
+    "SCOUT"
   ]
 }

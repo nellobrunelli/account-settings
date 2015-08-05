@@ -1,8 +1,7 @@
 import { DragDropContext } from 'react-dnd';
-import HTML5Backend, { NativeTypes } from 'react-dnd/modules/backends/HTML5';
+import HTML5Backend from 'react-dnd/modules/backends/HTML5';
 import Dustbin from './Dustbin';
 import Box from './Box';
-import ItemTypes from './ItemTypes';
 import update from 'react/lib/update';
 
 @DragDropContext(HTML5Backend)
@@ -11,20 +10,15 @@ export default class Board1 extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-      dustbins: [
-        { accepts: [ItemTypes.GLASS], lastDroppedItem: null },
-        { accepts: [ItemTypes.FOOD], lastDroppedItem: null },
-        { accepts: [ItemTypes.PAPER, ItemTypes.GLASS, NativeTypes.URL], lastDroppedItem: null },
-        { accepts: [ItemTypes.PAPER, NativeTypes.FILE], lastDroppedItem: null }
-      ],
-      boxes: [
-        { name: 'Bottle', type: ItemTypes.GLASS },
-        { name: 'Banana', type: ItemTypes.FOOD },
-        { name: 'Magazine', type: ItemTypes.PAPER }
-      ],
+
       droppedBoxNames: []
     };
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //    console.log('Board one is getting the property');
+  //    console.log(nextProps);
+  // }
 
   isDropped(boxName) {
       return this.state.droppedBoxNames.indexOf(boxName) > -1;
@@ -34,7 +28,7 @@ export default class Board1 extends React.Component {
       const { name } = item;
 
       this.setState(update(this.state, {
-        dustbins: {
+        persons: {
           [index]: {
             lastDroppedItem: {
               $set: item
@@ -48,26 +42,25 @@ export default class Board1 extends React.Component {
   }
 
   render() {
-      const { boxes, dustbins } = this.state;
-
       return (
       <div>
         <div style={{ overflow: 'hidden', clear: 'both' }}>
-          {dustbins.map(({ accepts, lastDroppedItem }, index) =>
+          {this.props.roles.map(({ accepts, lastDroppedItem, role }, index) =>
             <Dustbin accepts={accepts}
                      lastDroppedItem={lastDroppedItem}
                      onDrop={(item) => this.handleDrop(index, item)}
+                     role={role}
                      key={index} />
           )}
         </div>
 
         <div style={{ overflow: 'hidden', clear: 'both' }}>
-          {boxes.map(({ name, type }, index) =>
+          {this.props.persons.map(({ name, type }, index) =>
             <Box name={name}
                  type={type}
                  isDropped={this.isDropped(name)}
                  key={index} />
-          )}
+          ) }
         </div>
       </div>
     );

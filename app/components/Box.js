@@ -20,17 +20,23 @@ const boxSource = {
 };
 
 @DragSource(props => props.type, boxSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
 }))
 export default class Box extends Component {
   static propTypes = {
-    connectDragSource: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool.isRequired,
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    isDropped: PropTypes.bool.isRequired
+      connectDragSource: PropTypes.func.isRequired,
+      isDragging: PropTypes.bool.isRequired,
+      name: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      isDropped: PropTypes.bool.isRequired
   };
+
+  // debug
+  // componentDidMount() {
+  //  console.log('box props: ');
+  //  console.log(this.props);
+  // }
 
   render() {
       const { name, isDropped, isDragging, connectDragSource } = this.props;
