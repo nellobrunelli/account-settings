@@ -1,21 +1,17 @@
+const { ButtonGroup, DropdownButton, MenuItem } = ReactBootstrap;
+
 export default class Board1 extends React.Component {
-
-    // componentWillReceiveProps(nextProps) {
-    //     console.log(nextProps);
-    // }
-
     render() {
         return (
             <div>
-            {this.props.persons.map((el, id) => {
-                return <span key={id}>{el.name}<br /></span>;
-            })}
-
-            {this.props.roles.map((el, id) => {
-                return <span key={id}>{el}<br /></span>;
-            })}
+            <ButtonGroup vertical>
+               <DropdownButton title="Dropdown">
+                {this.props.groups.map((el, id) => {
+                    return <MenuItem eventKey={id}>{el}</MenuItem>;
+                })}
+               </DropdownButton>
+            </ButtonGroup>
             </div>
-
         );
     }
 }
@@ -23,5 +19,7 @@ export default class Board1 extends React.Component {
 Board1.propTypes = {
     persons: React.PropTypes.array.isRequired,
     roles: React.PropTypes.array.isRequired,
-    personsRoles: React.PropTypes.array.isRequired
+    personsRoles: React.PropTypes.array.isRequired,
+    groups: React.PropTypes.array.isRequired,
+    loggedUser: React.PropTypes.array.isRequired
 };

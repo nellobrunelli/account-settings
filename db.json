@@ -18,5 +18,11 @@
     "player",
     "coach",
     "scout"
+  ],
+  "personsRoles": [],
+  "groups": [
+    "Milan AC",
+    "Academy",
+    "Scouting"
   ]
 }

@@ -11,6 +11,7 @@ export default class Main extends React.Component {
             persons: [],
             roles: [],
             personsRoles: [],
+            groups: [],
             errors: []
         };
     }
@@ -19,6 +20,7 @@ export default class Main extends React.Component {
         this.getPersons();
         this.getRoles();
         this.getPersonsRoles();
+        this.getGroupsBySubscriptionId(1);
     }
 
     addPerson(person) {
@@ -71,10 +73,24 @@ export default class Main extends React.Component {
         });
     }
 
+    getGroupsBySubscriptionId() {
+        axios.get('http://localhost:3000/groups')
+        .then(response => {
+            this.setState({
+              groups: response.data
+            });
+        })
+        .catch(response => {
+            this.setState({
+                errors: response.data
+            });
+        });
+    }
+
     render() {
         return (
             <div id="main">
-                <Board1 persons={this.state.persons} roles={this.state.roles} personsRoles={this.state.personsRoles} />
+                 <Board1 groups={this.state.groups} roles={this.state.roles} personsRoles={this.state.persons} />
             </div>
         );
     }
