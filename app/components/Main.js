@@ -5,7 +5,7 @@ export default class Main extends React.Component {
     constructor() {
         super();
 
-        this.addPerson = this.addPerson.bind(this);
+        // this.addPerson = this.addPerson.bind(this);
 
         this.state = {
             persons: [],
