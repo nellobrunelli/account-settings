@@ -1,18 +1,17 @@
 import axios from 'axios';
-import Board1 from './Board1';
+import GroupSelector from './GroupSelector';
+import GroupExposer from './GroupExposer';
 
 export default class Main extends React.Component {
     constructor() {
         super();
 
-        // this.addPerson = this.addPerson.bind(this);
-
         this.state = {
             persons: [],
             roles: [],
             personsRoles: [],
-            groups: [],
-            errors: []
+            selected: [],
+            groups: []
         };
     }
 
@@ -20,7 +19,7 @@ export default class Main extends React.Component {
         this.getPersons();
         this.getRoles();
         this.getPersonsRoles();
-        this.getGroupsBySubscriptionId(1);
+        this.getGroupsBySubscriptionId();
     }
 
     addPerson(person) {
@@ -43,6 +42,10 @@ export default class Main extends React.Component {
                 errors: response.data
             });
         });
+    }
+
+    updateState(e, s) {
+        console.log('updateState', e, s);
     }
 
     getRoles() {
@@ -90,7 +93,8 @@ export default class Main extends React.Component {
     render() {
         return (
             <div id="main">
-                 <Board1 groups={this.state.groups} roles={this.state.roles} personsRoles={this.state.persons} />
+                 <GroupExposer selected={this.state.selected} />
+                 <GroupSelector groups={this.state.groups} updateState={this.updateState} />
             </div>
         );
     }
