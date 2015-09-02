@@ -12,8 +12,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import AddUser from './components/AddUser';
 // React.render(<AddUser roleId={{roleId: 12345678}}/>, document.getElementById('app'));
 
+// *** per la side bar
 // import GroupList from './components/GroupList';
 // React.render(<GroupList/>, document.getElementById('app'));
 
-import SubgroupList from './components/SubgroupList';
-React.render(<SubgroupList/>, document.getElementById('app'));
+// *** per la side bar
+// import SubgroupList from './components/SubgroupList';
+// React.render(<SubgroupList/>, document.getElementById('app'));
+
+// *** gruppo o subgruppo in fase di managing
+// import Managing from './components/Managing';
+// React.render(<Managing name={'Milan AC / Prima squadra'}/>, document.getElementById('app'));
+
+// *** gruppo o subgruppo in fase di managing
+import Welcome from './components/WelcomeUser';
+React.render(<Welcome userName={'Galliani'}/>, document.getElementById('app'));
