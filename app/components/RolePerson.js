@@ -17,7 +17,7 @@ export default class RolePerson extends React.Component {
             <span style={{
                 margin: 10
             }}>{this.props.personName}</span>
-            <Button onClick={this.handleRemove}> Remove </Button>
+            <Button onClick={this.handleRemove}>Remove</Button>
           </div>
         );
     }

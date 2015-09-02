@@ -1,7 +1,7 @@
 import RolePerson from './RolePerson';
 import AddUser from './AddUser';
 
-export default class RolePersonList extends React.Component {
+export default class SecondaryRolePersonList extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -18,6 +18,6 @@ export default class RolePersonList extends React.Component {
     }
 }
 
-RolePersonList.propTypes = {
+SecondaryRolePersonList.propTypes = {
     personList: React.PropTypes.array.isRequired
 };
