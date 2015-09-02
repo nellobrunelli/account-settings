@@ -1,4 +1,5 @@
 import RolePerson from './RolePerson';
+import AddUser from './AddUser';
 
 export default class RolePersonList extends React.Component {
     constructor(props) {
@@ -8,6 +9,7 @@ export default class RolePersonList extends React.Component {
     render() {
         return (
           <div>
+            <AddUser>Add User</AddUser>
             {this.props.personList.map((personName) => {
                 return <RolePerson personName={personName} />;
             })}

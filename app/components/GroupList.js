@@ -14,7 +14,7 @@ export default class GroupList extends React.Component {
     render() {
         return (
           <div>
-            Groups
+            <span style={{fontSize: '16px'}}>Groups</span>
             <ListGroup>
                 <ListGroupItem onClick={this.setGroup} style={{width: '200px', backgroundColor: '#D0D0D0'}}>
                    Milan AC

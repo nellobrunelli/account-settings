@@ -5,7 +5,7 @@ export default class RoleAvailability extends React.Component {
 
     render() {
         return (
-          <div>
+          <div  style={{fontSize: 18}}>
             <div>{this.props.roleData.name} {this.props.roleData.availability}</div>
           </div>
         );

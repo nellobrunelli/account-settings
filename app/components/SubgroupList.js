@@ -13,7 +13,7 @@ export default class SubgroupList extends React.Component {
     render() {
         return (
           <div style={{width: '200px', marginLeft: '20px'}}>
-            Subgroups
+            <span style={{fontSize: '16px'}}>Subgroups</span>
             <ListGroup>
                 <ListGroupItem onClick={this.setSubgroups} style={{backgroundColor: '#D0D0D0'}} >
                   Milan Prima Squadra
