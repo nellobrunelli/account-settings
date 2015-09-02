@@ -13,11 +13,12 @@ export default class SubgroupList extends React.Component {
     render() {
         return (
           <div>
+            Subgroups
             <ListGroup>
-                <ListGroupItem onClick={this.setSubgroups}>
+                <ListGroupItem onClick={this.setSubgroups} style={{width: '200px'}}>
                   Milan Primavera
                 </ListGroupItem>
-                <ListGroupItem onClick={this.setSubgroups}>
+                <ListGroupItem onClick={this.setSubgroups} style={{width: '200px'}}>
                   Pulcini
                 </ListGroupItem>
             </ListGroup>

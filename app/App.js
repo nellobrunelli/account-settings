@@ -1,5 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Main from './components/Main';
+React.render(<Main />, document.getElementById('app'));
+
 // import RolePerson from './components/RolePerson';
 // React.render(<RolePerson personName="Franco Puppo" />, document.getElementById('app'));
 
@@ -24,6 +27,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import Managing from './components/Managing';
 // React.render(<Managing name={'Milan AC / Prima squadra'}/>, document.getElementById('app'));
 
-// *** gruppo o subgruppo in fase di managing
-import Welcome from './components/WelcomeUser';
-React.render(<Welcome userName={'Galliani'}/>, document.getElementById('app'));
+// *** Welocme, Galliani
+// import Welcome from './components/WelcomeUser';
+// React.render(<Welcome userName={'Galliani'}/>, document.getElementById('app'));

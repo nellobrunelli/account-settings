@@ -14,11 +14,12 @@ export default class GroupList extends React.Component {
     render() {
         return (
           <div>
+            Groups
             <ListGroup>
-                <ListGroupItem onClick={this.setGroup}>
+                <ListGroupItem onClick={this.setGroup} style={{width: '200px'}}>
                    Milan AC
                 </ListGroupItem>
-                <ListGroupItem onClick={this.setGroup}>
+                <ListGroupItem onClick={this.setGroup} style={{width: '200px'}}>
                   Como Calcio
                 </ListGroupItem>
             </ListGroup>
