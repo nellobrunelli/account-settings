@@ -13,11 +13,11 @@ export default class RolePerson extends React.Component {
 
     render() {
         return (
-          <div>
+          <div style={{marginTop: 10}}>
             <span style={{
                 margin: 10
             }}>{this.props.personName}</span>
-            <Button onClick={this.handleRemove}>Remove</Button>
+            <Button onClick={this.handleRemove} >Remove</Button>
           </div>
         );
     }

@@ -5,7 +5,7 @@ export default class Managing extends React.Component {
 
     render() {
         return (
-          <div>
+          <div style={{fontSize: 22, marginBottom: '10px'}}>
             <div>{this.props.name}</div>
           </div>
         );

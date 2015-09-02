@@ -1,6 +1,21 @@
+import Managing from './Managing';
+import ContainerRole from './ContainerRole';
+const { Tabs, Tab } = ReactBootstrap;
+
+
 export default class BoxManaging extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            key: 1
+        };
+
+        this.handleSelect = this.handleSelect.bind(this);
+    }
+
+    handleSelect(key) {
+        this.setState({key});
+        console.log('selected tab ' + key);
     }
 
     render() {
@@ -11,8 +26,20 @@ export default class BoxManaging extends React.Component {
               top: 0,
               right: 0,
               bottom: 0,
-              left: '400px'
+              left: '400px',
+              padding: '1%'
           }}>
+
+              <Managing name={'Milan AC / Milan Prima squadra'} />
+
+              <Tabs activeKey={this.state.key} onSelect={this.handleSelect}>
+                <Tab eventKey={1} title="Users & Primary Roles">
+                  <ContainerRole style={{backgroundColor: '#E8E8E8', marginTop: '10px'}} />
+                </Tab>
+                <Tab eventKey={2} title="Secondary Roles">
+                    <ContainerRole style={{backgroundColor: '#E8E8E8', marginTop: '10px'}} />
+                </Tab>
+              </Tabs>
           </div>
         );
     }

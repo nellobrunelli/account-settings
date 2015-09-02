@@ -3,8 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Main from './components/Main';
 React.render(<Main />, document.getElementById('app'));
 
+// import ContainerRole from './components/ContainerRole';
+// React.render(<ContainerRole />, document.getElementById('app'));
+
 // import RolePerson from './components/RolePerson';
 // React.render(<RolePerson personName="Franco Puppo" />, document.getElementById('app'));
+
+// import RoleAvailability from './components/RoleAvailability';
+// React.render(<RoleAvailability roleData={{name: 'Scout', availability: '3/4 avaiable'}} />, document.getElementById('app'));
 
 // import RolePersonList from './components/RolePersonList';
 // React.render(<RolePersonList personList={['Tizio', 'Caio', 'Sempronio']} />, document.getElementById('app'));

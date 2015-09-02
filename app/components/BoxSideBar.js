@@ -12,9 +12,10 @@ export default class BoxSideBar extends React.Component {
               position: 'absolute',
               top: 0,
               left: 0,
-              width: 0
+              width: 0,
+              padding: '1%'
           }}>
-              <GroupList name={'Milan AC / Prima squadra'}/>
+              <GroupList name={'Milan AC / Prima squadra'} />
               <SubgroupList />
           </div>
         );
