@@ -66,7 +66,7 @@ export default class Main extends React.Component {
         axios.get('http://localhost:3000/personsRoles')
         .then(response => {
             this.setState({
-              personsRoles: response.data
+                personsRoles: response.data
             });
         })
         .catch(response => {
@@ -80,7 +80,7 @@ export default class Main extends React.Component {
         axios.get('http://localhost:3000/groups')
         .then(response => {
             this.setState({
-              groups: response.data
+                groups: response.data
             });
         })
         .catch(response => {

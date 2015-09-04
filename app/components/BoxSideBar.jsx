@@ -1,5 +1,5 @@
-import GroupList from './GroupList.js';
-import SubgroupList from './SubgroupList.js';
+import GroupList from './GroupList';
+import SubgroupList from './SubgroupList';
 
 export default class BoxSideBar extends React.Component {
     constructor(props) {
