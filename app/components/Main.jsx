@@ -7,7 +7,10 @@ export default class Main extends React.Component {
         super(props);
 
         this.state = {
-            groups: []
+            groups: [],
+            selectedGroup: false,
+            subgroups: [],
+            selectedSubgroup: false
         };
     }
 
@@ -29,11 +32,15 @@ export default class Main extends React.Component {
         });
     }
 
+    updateState(updateParam) {
+        console.log(updateParam);
+    }
+
     render() {
         return (
           <div>
-            <BoxSideBar />
-            <BoxManaging />
+            <BoxSideBar updateState={this.updateState} appState={this.state} />
+            <BoxManaging updateState={this.updateState} appState={this.state}  />
           </div>
         );
     }

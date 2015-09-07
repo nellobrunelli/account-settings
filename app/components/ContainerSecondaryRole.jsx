@@ -3,12 +3,15 @@ import RoleDescription from './RoleDescription';
 import PrimaryRolePersonList from './PrimaryRolePersonList';
 
 export default class ContainerPrimaryRole extends React.Component {
+
     constructor(props) {
         super(props);
     }
+
     static propTypes = {
         style: React.PropTypes.object
     }
+
     render() {
         const {style} = this.props;
         return (

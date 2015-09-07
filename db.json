@@ -23,7 +23,7 @@
   "groups": [
     {
       "meta": {
-        "self": "https://restbeta.wyscout.com/v1/areas.json",
+        "self": "https://restbeta.wyscout.com/v1/groups.json",
         "type": "groups",
         "fetch": [
           "subgroups"
@@ -32,16 +32,16 @@
         "page_size": 20,
         "page_current": 0,
         "page_count": 14,
-        "first": "https://restbeta.wyscout.com/v1/areas.json",
-        "last": "https://restbeta.wyscout.com/v1/areas.json?page=13",
-        "next": "https://restbeta.wyscout.com/v1/areas.json?page=1"
+        "first": "https://restbeta.wyscout.com/v1/groups.json",
+        "last": "https://restbeta.wyscout.com/v1/groups.json?page=13",
+        "next": "https://restbeta.wyscout.com/v1/groups.json?page=1"
       },
       "elements": [
         {
           "meta": {
             "name": "Milan AC"
           },
-          "subgroup": [
+          "subgroups": [
             {
               "1": "Milan - Prima Squadra"
             },

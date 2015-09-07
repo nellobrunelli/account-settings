@@ -6,6 +6,11 @@ export default class BoxSideBar extends React.Component {
         super(props);
     }
 
+    static propTypes = {
+        appState: React.PropTypes.object,
+        updateState: React.PropTypes.object
+    }
+
     render() {
         return (
           <div style={{
@@ -15,8 +20,8 @@ export default class BoxSideBar extends React.Component {
               width: 0,
               padding: '1%'
           }}>
-              <GroupList name={'Milan AC / Prima squadra'} />
-              <SubgroupList />
+              <GroupList updateState={this.props.updateState} appState={this.props.appState} />
+              <SubgroupList updateState={this.props.updateState} appState={this.props.appState} />
           </div>
         );
     }

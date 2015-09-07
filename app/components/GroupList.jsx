@@ -6,23 +6,35 @@ export default class GroupList extends React.Component {
         this.setGroup = this.setGroup.bind(this);
     }
 
+    static propTypes = {
+        appState: React.PropTypes.object
+    }
+
     setGroup() {
         console.log('showSubgroups');
         console.log('setGroupScenario');
     }
 
+    getGroupList = () => {
+        if (this.props.appState.groups.length > 0) {
+            console.log(this.props.appState.groups[0].elements);
+            return this.props.appState.groups[0].elements;
+        }
+
+        return [];
+    }
+
     render() {
+        const getGroupList = this.getGroupList();
         return (
           <div>
-            <span style={{fontSize: '16px'}}>Groups</span>
-            <ListGroup>
-                <ListGroupItem onClick={this.setGroup} style={{width: '200px', backgroundColor: '#D0D0D0'}}>
-                   Milan AC
-                </ListGroupItem>
-                <ListGroupItem onClick={this.setGroup} style={{width: '200px'}}>
-                  Como Calcio
-                </ListGroupItem>
-            </ListGroup>
+              <ListGroup>
+                  {
+                      getGroupList.map((el) => {
+                          return <ListGroupItem onClick={this.setGroup} style={{width: '200px'}}>{el.meta.name}</ListGroupItem>;
+                      })
+                  }
+              </ListGroup>
           </div>
         );
     }
