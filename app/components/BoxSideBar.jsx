@@ -1,5 +1,4 @@
 import GroupList from './GroupList';
-import SubgroupList from './SubgroupList';
 
 export default class BoxSideBar extends React.Component {
     constructor(props) {
@@ -21,7 +20,6 @@ export default class BoxSideBar extends React.Component {
               padding: '1%'
           }}>
               <GroupList updateState={this.props.updateState} appState={this.props.appState} />
-              <SubgroupList updateState={this.props.updateState} appState={this.props.appState} />
           </div>
         );
     }
