@@ -14,6 +14,11 @@ export default class BoxManaging extends React.Component {
         this.handleSelect = this.handleSelect.bind(this);
     }
 
+    static propTypes = {
+        appState: React.PropTypes.object,
+        updateState: React.PropTypes.function
+    }
+
     handleSelect(key) {
         this.setState({key});
         console.log('selected tab ' + key);
@@ -31,7 +36,7 @@ export default class BoxManaging extends React.Component {
               padding: '1%'
           }}>
 
-              <Managing name={'Milan AC / Milan Prima squadra'} />
+              <Managing name={'Milan AC / Milan Prima squadra'} updateState={this.updateState} appState={this.props.appState} />
 
               <Tabs activeKey={this.state.key} onSelect={this.handleSelect}>
                 <Tab eventKey={1} title="Users & Primary Roles">

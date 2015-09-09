@@ -3,6 +3,10 @@ export default class Managing extends React.Component {
         super(props);
     }
 
+    getManagedThings = ()  => {
+        console.log(this.props);
+    }
+
     render() {
         return (
           <div style={{fontSize: 22, marginBottom: '10px'}}>

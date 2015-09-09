@@ -32,15 +32,17 @@ export default class Main extends React.Component {
         });
     }
 
-    updateState(updateParam) {
+    updateState = (updateParam) => {
+        console.log('Main -> updateState');
         console.log(updateParam);
+        this.setState(updateParam);
     }
 
     render() {
         return (
           <div>
             <BoxSideBar updateState={this.updateState} appState={this.state} />
-            <BoxManaging updateState={this.updateState} appState={this.state}  />
+            <BoxManaging updateState={this.updateState} appState={this.state} />
           </div>
         );
     }
