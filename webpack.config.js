@@ -30,8 +30,12 @@ module.exports = {
             test: /\.css$/,
             loader: 'style!css'
         }, {
-            test: /\.(eot|woff2|ttf|svg|woff)$/,
+            test: /\.(png|eot|woff2|ttf|svg|woff)$/,
             loader: 'url-loader'
+        },
+        {
+            test: /\.json$/,
+            loader: 'json-loader'
         }]
     },
 

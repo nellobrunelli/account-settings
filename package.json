@@ -25,6 +25,7 @@
     "eslint-plugin-react": "^3.3.1",
     "file-loader": "^0.8.4",
     "jsdom": "^6.3.0",
+    "json-loader": "^0.5.2",
     "json-server": "^0.7.26",
     "node-libs-browser": "^0.5.2",
     "npm-check": "^4.0.1",
@@ -36,6 +37,7 @@
   "dependencies": {
     "axios": "^0.5.4",
     "bootstrap": "^3.3.5",
+    "elastic-form": "git+ssh://alessandro.casazza@dev0.wyscout.com:29418/~alessandro.casazza/elastic-form.git",
     "flux": "^2.1.1",
     "keymirror": "^0.1.1",
     "normalize-css": "^2.3.1",
