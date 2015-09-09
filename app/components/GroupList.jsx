@@ -18,22 +18,21 @@ export default class GroupList extends React.Component {
     }
 
     getGroupList = () => {
-        const Panels = (this.props.appState.groups.length > 0) ? this.props.appState.groups[0].elements.map((el, key) => {
-            return (
-                <Panel header={el.meta.name} onClick={this.setGroup} style={{width: '200px'}} eventKey={key}>
-                    <ButtonGroup vertical>
-                        {
-                            (typeof el.subgroups === 'undefined') ? null : el.subgroups.map((subgroup, i) => {
-                                // const index = i + 1;
-                                return <Button key={i}>{subgroup[Object.keys(subgroup)[0]]}</Button>;
-                            })
-                        }
-                    </ButtonGroup>
-                </Panel>
-            );
-        }) : null;
-
         if (this.props.appState.groups.length > 0) {
+            const Panels = this.props.appState.groups[0].elements.map((el, key) => {
+                return (
+                    <Panel header={el.meta.name} onClick={this.setGroup} style={{width: '200px'}} eventKey={key}>
+                        <ButtonGroup vertical>
+                            {
+                                el.subgroups.map((subgroup, i) => {
+                                    return <Button key={i}>{subgroup[Object.keys(subgroup)[0]]}</Button>;
+                                })
+                            }
+                        </ButtonGroup>
+                    </Panel>
+                );
+            });
+
             return (
                 <PanelGroup onSelect={this.handleSelect} accordion>
                     {Panels}
