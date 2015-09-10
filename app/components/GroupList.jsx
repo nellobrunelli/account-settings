@@ -5,9 +5,6 @@ export default class GroupList extends React.Component {
         super(props);
         // this.setGroup = this.setGroup.bind(this);
         // this.props.updateState = this.props.updateState.bind(this);
-        // console.log('-----------');
-        // console.log(props.updateState);
-        // console.log('-----------');
     }
 
     static propTypes = {
@@ -15,21 +12,27 @@ export default class GroupList extends React.Component {
         updateState: React.PropTypes.function
     }
 
-    // setGroup() {
-    //     console.log('showSubgroups');
-    //     console.log('setGroupScenario');
-    // }
-
-    getGroupList = () => {
+    /**
+    * Lista dei gruppi e subgruppi
+    */
+    getGroupsSubgroupsList = () => {
         if (this.props.appState.groups.length > 0) {
             const Panels = this.props.appState.groups[0].elements.map((el, key) => {
                 return (
-                    <Panel header={el.meta.name} style={{width: '300px'}} key={key} eventKey={el.meta.name}>
+                    <Panel
+                        header={el.meta.name}
+                        style={{width: '300px'}}
+                        key={key}
+                        eventKey={el.meta.name}>
                         <ButtonGroup vertical>
                             {
                                 el.subgroups.map((subgroup, i) => {
                                     return (
-                                        <MenuItem key={i} group={el.meta.name} subgroup={subgroup[Object.keys(subgroup)[0]]} onSelect={this.handleSubgroupSelect.bind(this, el.meta.name, subgroup[Object.keys(subgroup)[0]])}>
+                                        <MenuItem
+                                            key={i}
+                                            group={el.meta.name}
+                                            subgroup={subgroup[Object.keys(subgroup)[0]]}
+                                            onSelect={this.handleSubgroupSelect.bind(this, el.meta.name, subgroup[Object.keys(subgroup)[0]])}>
                                             <Button>{subgroup[Object.keys(subgroup)[0]]}</Button>
                                         </MenuItem>
                                     );
@@ -62,10 +65,10 @@ export default class GroupList extends React.Component {
     }
 
     render() {
-        const getGroupList = this.getGroupList();
+        const getGroupsSubgroupsList = this.getGroupsSubgroupsList();
         return (
           <div>
-              {getGroupList}
+              {getGroupsSubgroupsList}
           </div>
         );
     }

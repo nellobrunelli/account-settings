@@ -7,7 +7,7 @@ export default class BoxSideBar extends React.Component {
 
     static propTypes = {
         appState: React.PropTypes.object,
-        updateState: React.PropTypes.function
+        updateState: React.PropTypes.object
     }
 
     render() {
