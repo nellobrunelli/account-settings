@@ -26,8 +26,11 @@ export default class Managing extends React.Component {
     render() {
         let getManagedThings = this.getManagedThings();
         return (
-          <div style={{fontSize: 22, marginBottom: '10px'}}>
-            <div>{getManagedThings}</div>
+          <div style={{
+              fontSize: 22,
+              marginBottom: '10px'
+          }}>
+                <div>{getManagedThings}</div>
           </div>
         );
     }

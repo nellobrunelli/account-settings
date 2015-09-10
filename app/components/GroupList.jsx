@@ -55,13 +55,19 @@ export default class GroupList extends React.Component {
         // arriva da componente Panel-> onSelect ... viene passato ciò che è nell'attributo key
         console.log(key);
         console.log(this.props);
-        this.props.updateState({selectedGroup: key, selectedSubgroup: false});
+        this.props.updateState({
+            selectedGroup: key,
+            selectedSubgroup: false
+        });
     }
 
     handleSubgroupSelect = (group, subgroup) => {
         console.log(group);
         console.log(subgroup);
-        this.props.updateState({selectedGroup: group, selectedSubgroup: subgroup});
+        this.props.updateState({
+            selectedGroup: group,
+            selectedSubgroup: subgroup
+        });
     }
 
     render() {

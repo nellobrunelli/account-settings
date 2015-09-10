@@ -1,0 +1,17 @@
+.managing-appear {
+  opacity: 0.1;
+  transition: opacity 5s ease-in;
+}
+
+.managing-appear.managing-appear-active {
+  opacity: 1;
+}
+
+.managing-enter {
+  opacity: 0.1;
+  transition: opacity 5s ease-in;
+}
+
+.managing-enter.managing-appear-enter {
+  opacity: 1;
+}

@@ -1,8 +1,5 @@
 import Managing from './Managing';
-import ContainerPrimaryRole from './ContainerPrimaryRole';
-import ContainerSecondaryRole from './ContainerSecondaryRole';
-const { Tabs, Tab } = ReactBootstrap;
-
+import ManagingRoles from './ManagingRoles';
 
 export default class BoxManaging extends React.Component {
     constructor(props) {
@@ -35,17 +32,8 @@ export default class BoxManaging extends React.Component {
               left: '400px',
               padding: '1%'
           }}>
-
               <Managing updateState={this.updateState} appState={this.props.appState} />
-
-              <Tabs activeKey={this.state.key} onSelect={this.handleSelect}>
-                <Tab eventKey={1} title="Users & Primary Roles">
-                  <ContainerPrimaryRole style={{backgroundColor: '#E8E8E8', marginTop: '10px'}} />
-                </Tab>
-                <Tab eventKey={2} title="Secondary Roles">
-                    <ContainerSecondaryRole style={{backgroundColor: '#E8E8E8', marginTop: '10px'}} />
-                </Tab>
-              </Tabs>
+              <ManagingRoles updateState={this.updateState} appState={this.props.appState} />
           </div>
         );
     }

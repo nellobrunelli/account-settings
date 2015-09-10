@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/ReactCSSTransitionGroup.css';
 
 import Main from './components/Main';
 React.render(<Main />, document.getElementById('app'));
