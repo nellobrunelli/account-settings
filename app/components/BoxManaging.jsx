@@ -12,8 +12,8 @@ export default class BoxManaging extends React.Component {
     }
 
     static propTypes = {
-        appState: React.PropTypes.object,
-        updateState: React.PropTypes.function
+        appState: React.PropTypes.object.isRequired,
+        updateState: React.PropTypes.func.isRequired
     }
 
     handleSelect(key) {
@@ -32,8 +32,8 @@ export default class BoxManaging extends React.Component {
               left: '400px',
               padding: '1%'
           }}>
-              <Managing updateState={this.updateState} appState={this.props.appState} />
-              <ManagingRoles updateState={this.updateState} appState={this.props.appState} />
+              <Managing updateState={this.props.updateState} appState={this.props.appState} />
+              <ManagingRoles updateState={this.props.updateState} appState={this.props.appState} />
           </div>
         );
     }

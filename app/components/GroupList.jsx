@@ -3,13 +3,11 @@ const { PanelGroup, Panel, ButtonGroup, Button, MenuItem } = ReactBootstrap;
 export default class GroupList extends React.Component {
     constructor(props) {
         super(props);
-        // this.setGroup = this.setGroup.bind(this);
-        // this.props.updateState = this.props.updateState.bind(this);
     }
 
     static propTypes = {
-        appState: React.PropTypes.object,
-        updateState: React.PropTypes.function
+        appState: React.PropTypes.object.isRequired,
+        updateState: React.PropTypes.func.isRequired
     }
 
     /**

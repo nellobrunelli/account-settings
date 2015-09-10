@@ -4,8 +4,8 @@ export default class Managing extends React.Component {
     }
 
     static propTypes = {
-        appState: React.PropTypes.object,
-        updateState: React.PropTypes.function
+        appState: React.PropTypes.object.isRequired,
+        updateState: React.PropTypes.func.isRequired
     }
 
     getManagedThings = () => {
