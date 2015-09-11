@@ -5,7 +5,6 @@ import BoxManaging from './BoxManaging';
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             groups: [],
             selectedGroup: false,
@@ -15,21 +14,19 @@ export default class Main extends React.Component {
     }
 
     componentWillMount() {
-        this.getGroupsBySubscriptionId();
+        this.getData();
     }
 
-    getGroupsBySubscriptionId() {
-        axios.get('http://localhost:3000/groups')
-        .then(response => {
+    getData() {
+        axios.all([
+            axios.get('http://localhost:3000/groups'),
+            axios.get('http://localhost:3000/roles')
+        ]).then(axios.spread((groups, roles) => {
             this.setState({
-                groups: response.data
+                groups: groups.data,
+                roles: roles.data
             });
-        })
-        .catch(response => {
-            this.setState({
-                errors: response.data
-            });
-        });
+        }));
     }
 
     updateState = (updateParam) => {

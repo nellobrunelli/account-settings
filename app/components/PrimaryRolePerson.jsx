@@ -1,6 +1,6 @@
 const { Button } = ReactBootstrap;
 
-export default class RolePerson extends React.Component {
+export default class PrimaryRolePerson extends React.Component {
     constructor(props) {
         super(props);
 
