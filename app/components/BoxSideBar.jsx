@@ -7,7 +7,9 @@ export default class BoxSideBar extends React.Component {
 
     static propTypes = {
         appState: React.PropTypes.object.isRequired,
-        updateState: React.PropTypes.func.isRequired
+        updateState: React.PropTypes.func.isRequired,
+        appStore: React.PropTypes.object.isRequired,
+        updateStore: React.PropTypes.func.isRequired
     }
 
     render() {
@@ -19,7 +21,12 @@ export default class BoxSideBar extends React.Component {
               width: 0,
               padding: '1%'
           }}>
-              <GroupList updateState={this.props.updateState} appState={this.props.appState} />
+              <GroupList
+                  appState={this.props.appState}
+                  updateState={this.props.updateState}
+                  appStore={this.props.appStore}
+                  updateStore={this.props.updateStore}
+              />
           </div>
         );
     }

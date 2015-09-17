@@ -7,46 +7,49 @@ export default class GroupList extends React.Component {
 
     static propTypes = {
         appState: React.PropTypes.object.isRequired,
-        updateState: React.PropTypes.func.isRequired
+        updateState: React.PropTypes.func.isRequired,
+        appStore: React.PropTypes.object.isRequired,
+        updateStore: React.PropTypes.func.isRequired
     }
 
     /**
     * Lista dei gruppi e subgruppi
     */
     getGroupsSubgroupsList = () => {
-        if (this.props.appState.groups.length > 0) {
-            const Panels = this.props.appState.groups[0].elements.map((el, key) => {
-                return (
-                    <Panel
-                        header={el.meta.name}
-                        style={{width: '300px'}}
-                        key={key}
-                        eventKey={el.meta.name}>
-                        <ButtonGroup vertical>
-                            {
-                                el.subgroups.map((subgroup, i) => {
-                                    return (
-                                        <MenuItem
-                                            key={i}
-                                            group={el.meta.name}
-                                            subgroup={subgroup[Object.keys(subgroup)[0]]}
-                                            onSelect={this.handleSubgroupSelect.bind(this, el.meta.name, subgroup[Object.keys(subgroup)[0]])}>
-                                            <Button>{subgroup[Object.keys(subgroup)[0]]}</Button>
-                                        </MenuItem>
-                                    );
-                                })
-                            }
-                        </ButtonGroup>
-                    </Panel>
-                );
-            });
+        let groups = this.props.appState.subscription.groups;
+        let groupsIds = Object.keys(groups);
 
+        let Panels = groupsIds.map((id, key) => {
             return (
-                <PanelGroup onSelect={this.handleGroupSelect} accordion>
-                    {Panels}
-                </PanelGroup>
+                <Panel
+                    header={id}
+                    style={{width: '300px'}}
+                    key={key}
+                    eventKey={id}>
+                    <ButtonGroup vertical>
+                        {
+                            groups[id].subgroups.map((subgroupId, i) => {
+                                return (
+                                    <MenuItem
+                                        key={i}
+                                        group={id}
+                                        subgroup={subgroupId}
+                                        onSelect={this.handleSubgroupSelect.bind(this, id, subgroupId)}>
+                                        <Button>{subgroupId}</Button>
+                                    </MenuItem>
+                                );
+                            })
+                        }
+                    </ButtonGroup>
+                </Panel>
             );
-        }
+        });
+
+        return (
+            <PanelGroup onSelect={this.handleGroupSelect} accordion>
+                {Panels}
+            </PanelGroup>
+        );
     }
 
     handleGroupSelect = (key) => {
