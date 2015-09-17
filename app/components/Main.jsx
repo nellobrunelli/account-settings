@@ -22,14 +22,16 @@ export default class Main extends React.Component {
     }
 
     componentWillMount() {
-        this.getData();
+        this.getData('load');
     }
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log('shouldComponentUpdate');
-        let update = true;
         console.log(this.state);
         console.log(nextState);
+
+        let update = false;
+
         switch (true) {
         case (this.state.selectedGroup !== nextState.selectedGroup):
             update = true;
@@ -44,10 +46,11 @@ export default class Main extends React.Component {
         return update;
     }
 
-    getData = () => {
-        switch (true) {
+    getData = (param) => {
+        switch (param) {
         // ->>> LOAD DELLA APP
-        case ((this.state.selectedGroup === false)):
+        // case ((this.state.selectedGroup === false)):
+        case ('load'):
             axios.all([
                 axios.get('http://wyrest/v1/cerebrum/groups/groupsbysubscriptionid?subscriptionId=123&access_token=frenk'),
                 axios.get('http://wyrest/v1/cerebrum/groups/subscriptiongroups?subscriptionId=123&access_token=frenk'),
@@ -62,11 +65,13 @@ export default class Main extends React.Component {
             })).catch(error => console.log(error));
             break;
         // ->>> GRUPPO SELEZIONATO
-        case ((this.state.selectedGroup) && (this.state.selectedSubgroup === false)):
+        // case ((this.state.selectedGroup) && (this.state.selectedSubgroup === false)):
+        case ('group'):
             console.log('IMPLEMENTARE AJAX CALL PER CASE GRUPPO SELEZIONATO');
             break;
         // ->>> SUBGRUPPO SELEZIONATO
-        case ((this.state.selectedGroup) && (this.state.selectedSubgroup)):
+        // case ((this.state.selectedGroup) && (this.state.selectedSubgroup)):
+        case ('subgroup'):
             console.log('IMPLEMENTARE AJAX CALL PER CASE SUBGRUPPO SELEZIONATO');
             break;
         default:
@@ -157,16 +162,17 @@ export default class Main extends React.Component {
           <div>
             <BoxSideBar
                 appState={this.state}
-                updateState={this.updateState}
                 appStore={this.store}
+                getData={this.getData}
                 updateStore={this.updateStore}
                 getStore={this.getStore}
             />
             <BoxManaging
                 appState={this.state}
-                updateState={this.updateState}
                 appStore={this.store}
+                getData={this.getData}
                 updateStore={this.updateStore}
+                getStore={this.getStore}
             />
           </div>
         );

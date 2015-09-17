@@ -7,7 +7,7 @@ export default class GroupList extends React.Component {
 
     static propTypes = {
         appState: React.PropTypes.object.isRequired,
-        updateState: React.PropTypes.func.isRequired,
+        getData: React.PropTypes.func.isRequired,
         appStore: React.PropTypes.object.isRequired,
         updateStore: React.PropTypes.func.isRequired,
         getStore: React.PropTypes.func.isRequired
@@ -57,13 +57,13 @@ export default class GroupList extends React.Component {
 
     handleGroupSelect = (key) => {
         // arriva da componente Panel-> onSelect ... viene passato ciò che è nell'attributo key
-        this.props.updateState('group', key);
+        this.props.getData('group', key);
     }
 
     handleSubgroupSelect = (group, subgroup) => {
         console.log(group);
         console.log(subgroup);
-        this.props.updateState({
+        this.props.getData({
             selectedGroup: group,
             selectedSubgroup: subgroup
         });

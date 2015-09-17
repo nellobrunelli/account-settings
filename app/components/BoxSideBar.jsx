@@ -7,7 +7,7 @@ export default class BoxSideBar extends React.Component {
 
     static propTypes = {
         appState: React.PropTypes.object.isRequired,
-        updateState: React.PropTypes.func.isRequired,
+        getData: React.PropTypes.func.isRequired,
         appStore: React.PropTypes.object.isRequired,
         updateStore: React.PropTypes.func.isRequired,
         getStore: React.PropTypes.func.isRequired
@@ -24,7 +24,7 @@ export default class BoxSideBar extends React.Component {
           }}>
               <GroupList
                   appState={this.props.appState}
-                  updateState={this.props.updateState}
+                  getData={this.props.getData}
                   appStore={this.props.appStore}
                   updateStore={this.props.updateStore}
                   getStore={this.props.getStore}
