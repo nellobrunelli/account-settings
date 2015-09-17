@@ -17,7 +17,9 @@ export default class Main extends React.Component {
 
         this.store = {
             groups: {},
-            subgroups: {}
+            subgroups: {},
+            roles: {},
+            users: {}
         };
     }
 
@@ -52,7 +54,7 @@ export default class Main extends React.Component {
         // case ((this.state.selectedGroup === false)):
         case ('load'):
             axios.all([
-                axios.get('http://wyrest/v1/cerebrum/groups/groupsbysubscriptionid?subscriptionId=123&access_token=frenk'),
+                axios.get('http://wyrest/v1/cerebrum/groups/groupsbysubscriptionid?subscriptionId=1&access_token=frenk'),
                 axios.get('http://wyrest/v1/cerebrum/groups/subscriptiongroups?subscriptionId=123&access_token=frenk'),
                 axios.get('http://wyrest/v1/cerebrum/groups/subscriptionsubgroups?subscriptionId=123&access_token=frenk')
             ]).then(axios.spread((subscription, groupsList, subgroupsList) => {
@@ -67,12 +69,42 @@ export default class Main extends React.Component {
         // ->>> GRUPPO SELEZIONATO
         // case ((this.state.selectedGroup) && (this.state.selectedSubgroup === false)):
         case ('group'):
-            console.log('IMPLEMENTARE AJAX CALL PER CASE GRUPPO SELEZIONATO');
+            axios.all([
+                axios.get('http://wyrest/v1/cerebrum/groups?subscriptionId=1&groupId=1234&access_token=frenk'),
+                axios.get('http://wyrest/v1/cerebrum/groups/subscriptiongroups?subscriptionId=123&access_token=frenk'),
+                axios.get('http://wyrest/v1/cerebrum/groups/subscriptionsubgroups?subscriptionId=123&access_token=frenk'),
+                axios.get('http://wyrest/v1/cerebrum/groups/subscriptionroles?subscriptionId=12&access_token=frenk'),
+                axios.get('http://wyrest/v1/cerebrum/groups/subscriptionusers?subscriptionId=1&access_token=frenk')
+            ]).then(axios.spread((subscription, groupsList, subgroupsList, rolesList, usersList) => {
+                // update Store
+                this.updateStore('groups', groupsList);
+                this.updateStore('subgroups', subgroupsList);
+                this.updateStore('roles', rolesList);
+                this.updateStore('users', usersList);
+
+                // update State
+                this.updateState('subscription', subscription);
+            })).catch(error => console.log(error));
             break;
         // ->>> SUBGRUPPO SELEZIONATO
         // case ((this.state.selectedGroup) && (this.state.selectedSubgroup)):
         case ('subgroup'):
-            console.log('IMPLEMENTARE AJAX CALL PER CASE SUBGRUPPO SELEZIONATO');
+            axios.all([
+                axios.get('http://wyrest/v1/cerebrum/groups/subgroup?subscriptionId=1&subgroupId=2&access_token=frenk'),
+                axios.get('http://wyrest/v1/cerebrum/groups/subscriptiongroups?subscriptionId=123&access_token=frenk'),
+                axios.get('http://wyrest/v1/cerebrum/groups/subscriptionsubgroups?subscriptionId=123&access_token=frenk'),
+                axios.get('http://wyrest/v1/cerebrum/groups/subscriptionroles?subscriptionId=12&access_token=frenk'),
+                axios.get('http://wyrest/v1/cerebrum/groups/subscriptionusers?subscriptionId=1&access_token=frenk')
+            ]).then(axios.spread((subscription, groupsList, subgroupsList, rolesList, usersList) => {
+                // update Store
+                this.updateStore('groups', groupsList);
+                this.updateStore('subgroups', subgroupsList);
+                this.updateStore('roles', rolesList);
+                this.updateStore('users', usersList);
+
+                // update State
+                this.updateState('subscription', subscription);
+            })).catch(error => console.log(error));
             break;
         default:
             // ->>> APP IN ERRORE
@@ -98,7 +130,15 @@ export default class Main extends React.Component {
             });
             break;
         case 'group':
-            console.log('Update STATE subscription');
+            console.log('Update STATE group');
+            console.log(val);
+            this.setState({
+                dataLoaded: true,
+                selectedGroup: val
+            });
+            break;
+        case 'subgroup':
+            console.log('Update STATE subgroup');
             console.log(val);
             this.setState({
                 dataLoaded: true,
@@ -128,6 +168,18 @@ export default class Main extends React.Component {
             // console.log(key);
             // console.log(val);
             this.store.subgroups = val.data.subgroups;
+            break;
+        case 'roles':
+            // console.log('roles');
+            // console.log(key);
+            // console.log(val);
+            this.store.roles = val.data.roles;
+            break;
+        case 'users':
+            // console.log('users');
+            // console.log(key);
+            // console.log(val);
+            this.store.users = val.data.users;
             break;
         default:
             console.log('WRONG PARAM ON UPDATE STORE');

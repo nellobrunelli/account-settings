@@ -63,9 +63,9 @@ export default class GroupList extends React.Component {
     handleSubgroupSelect = (group, subgroup) => {
         console.log(group);
         console.log(subgroup);
-        this.props.getData({
-            selectedGroup: group,
-            selectedSubgroup: subgroup
+        this.props.getData('subgroup', {
+            group: group,
+            subgroup: subgroup
         });
     }
 
