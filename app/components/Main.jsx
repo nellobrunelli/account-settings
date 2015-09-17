@@ -28,10 +28,11 @@ export default class Main extends React.Component {
             axios.get('http://wyrest/v1/cerebrum/groups/subscriptiongroups?subscriptionId=123&access_token=frenk'),
             axios.get('http://wyrest/v1/cerebrum/groups/subscriptionsubgroups?subscriptionId=123&access_token=frenk')
         ]).then(axios.spread((subscription, groupsList, subgroupsList) => {
-            this.updateState('subscription', subscription);
             // update Store
             this.updateStore('groups', groupsList);
             this.updateStore('subgroups', subgroupsList);
+
+            this.updateState('subscription', subscription);
         })).catch(error => console.log(error));
     }
 
@@ -39,6 +40,7 @@ export default class Main extends React.Component {
     * Update state
     */
     updateState = (key, val) => {
+        console.log('Main -> updateSTATE');
         switch (key) {
         case 'subscription':
             // console.log('Update STATE subscription');
@@ -76,6 +78,29 @@ export default class Main extends React.Component {
         }
     }
 
+    /**
+    * Update store
+    */
+    getStore = (key, val) => {
+        console.log('Main -> getSTORE');
+        switch (key) {
+        case 'group':
+            // console.log('groups');
+            // console.log(key);
+            // console.log(val);
+            // console.log(this.store.groups);
+            return this.store.groups[val];
+        case 'subgroup':
+            // console.log('subgroups');
+            // console.log(key);
+            // console.log(val);
+            return this.store.subgroups[val];
+
+        default:
+            console.log('WRONG PARAM ON GET STORE');
+        }
+    }
+
     render() {
         return (
           <div>
@@ -84,6 +109,7 @@ export default class Main extends React.Component {
                 updateState={this.updateState}
                 appStore={this.store}
                 updateStore={this.updateStore}
+                getStore={this.getStore}
             />
             <BoxManaging
                 appState={this.state}

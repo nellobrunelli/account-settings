@@ -9,7 +9,8 @@ export default class GroupList extends React.Component {
         appState: React.PropTypes.object.isRequired,
         updateState: React.PropTypes.func.isRequired,
         appStore: React.PropTypes.object.isRequired,
-        updateStore: React.PropTypes.func.isRequired
+        updateStore: React.PropTypes.func.isRequired,
+        getStore: React.PropTypes.func.isRequired
     }
 
     /**
@@ -22,7 +23,7 @@ export default class GroupList extends React.Component {
         let Panels = groupsIds.map((id, key) => {
             return (
                 <Panel
-                    header={id}
+                    header={this.props.getStore('group', id)}
                     style={{width: '300px'}}
                     key={key}
                     eventKey={id}>
@@ -35,7 +36,7 @@ export default class GroupList extends React.Component {
                                         group={id}
                                         subgroup={subgroupId}
                                         onSelect={this.handleSubgroupSelect.bind(this, id, subgroupId)}>
-                                        <Button>{subgroupId}</Button>
+                                        <Button>{this.props.getStore('subgroup', subgroupId)}</Button>
                                     </MenuItem>
                                 );
                             })
