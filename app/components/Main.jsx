@@ -7,6 +7,9 @@ export default class Main extends React.Component {
         super(props);
 
         this.state = {
+            dataLoaded: false,
+            selectedGroup: false,
+            selectedSubgroup: false,
             subscription: {
                 groups: {}
             }
@@ -22,18 +25,56 @@ export default class Main extends React.Component {
         this.getData();
     }
 
-    getData = () => {
-        axios.all([
-            axios.get('http://wyrest/v1/cerebrum/groups/groupsbysubscriptionid?subscriptionId=123&access_token=frenk'),
-            axios.get('http://wyrest/v1/cerebrum/groups/subscriptiongroups?subscriptionId=123&access_token=frenk'),
-            axios.get('http://wyrest/v1/cerebrum/groups/subscriptionsubgroups?subscriptionId=123&access_token=frenk')
-        ]).then(axios.spread((subscription, groupsList, subgroupsList) => {
-            // update Store
-            this.updateStore('groups', groupsList);
-            this.updateStore('subgroups', subgroupsList);
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate');
+        let update = true;
+        console.log(this.state);
+        console.log(nextState);
+        switch (true) {
+        case (this.state.selectedGroup !== nextState.selectedGroup):
+            update = true;
+            break;
+        case (this.state.dataLoaded !== nextState.dataLoaded):
+            update = true;
+            break;
+        default:
+            update = false;
+        }
 
-            this.updateState('subscription', subscription);
-        })).catch(error => console.log(error));
+        return update;
+    }
+
+    getData = () => {
+        switch (true) {
+        // ->>> LOAD DELLA APP
+        case ((this.state.selectedGroup === false)):
+            axios.all([
+                axios.get('http://wyrest/v1/cerebrum/groups/groupsbysubscriptionid?subscriptionId=123&access_token=frenk'),
+                axios.get('http://wyrest/v1/cerebrum/groups/subscriptiongroups?subscriptionId=123&access_token=frenk'),
+                axios.get('http://wyrest/v1/cerebrum/groups/subscriptionsubgroups?subscriptionId=123&access_token=frenk')
+            ]).then(axios.spread((subscription, groupsList, subgroupsList) => {
+                // update Store
+                this.updateStore('groups', groupsList);
+                this.updateStore('subgroups', subgroupsList);
+
+                // update State
+                this.updateState('subscription', subscription);
+            })).catch(error => console.log(error));
+            break;
+        // ->>> GRUPPO SELEZIONATO
+        case ((this.state.selectedGroup) && (this.state.selectedSubgroup === false)):
+            console.log('IMPLEMENTARE AJAX CALL PER CASE GRUPPO SELEZIONATO');
+            break;
+        // ->>> SUBGRUPPO SELEZIONATO
+        case ((this.state.selectedGroup) && (this.state.selectedSubgroup)):
+            console.log('IMPLEMENTARE AJAX CALL PER CASE SUBGRUPPO SELEZIONATO');
+            break;
+        default:
+            // ->>> APP IN ERRORE
+            console.log('*** WRONG STATE SULLA APP ***');
+            console.log(val);
+            break;
+        }
     }
 
     /**
@@ -41,12 +82,22 @@ export default class Main extends React.Component {
     */
     updateState = (key, val) => {
         console.log('Main -> updateSTATE');
+        console.log(key);
         switch (key) {
         case 'subscription':
             // console.log('Update STATE subscription');
-            // console.log(val.data.subscription);
+            // console.log(val);
             this.setState({
+                dataLoaded: true,
                 subscription: val.data.subscription
+            });
+            break;
+        case 'group':
+            console.log('Update STATE subscription');
+            console.log(val);
+            this.setState({
+                dataLoaded: true,
+                selectedGroup: val
             });
             break;
         default:

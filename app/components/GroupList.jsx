@@ -36,7 +36,9 @@ export default class GroupList extends React.Component {
                                         group={id}
                                         subgroup={subgroupId}
                                         onSelect={this.handleSubgroupSelect.bind(this, id, subgroupId)}>
-                                        <Button>{this.props.getStore('subgroup', subgroupId)}</Button>
+                                        <Button>
+                                            {this.props.getStore('subgroup', subgroupId)}
+                                        </Button>
                                     </MenuItem>
                                 );
                             })
@@ -55,12 +57,7 @@ export default class GroupList extends React.Component {
 
     handleGroupSelect = (key) => {
         // arriva da componente Panel-> onSelect ... viene passato ciò che è nell'attributo key
-        console.log(key);
-        console.log(this.props);
-        this.props.updateState({
-            selectedGroup: key,
-            selectedSubgroup: false
-        });
+        this.props.updateState('group', key);
     }
 
     handleSubgroupSelect = (group, subgroup) => {
