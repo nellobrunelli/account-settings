@@ -35,10 +35,16 @@ export default class Main extends React.Component {
         let update = false;
 
         switch (true) {
+        // load della App
+        case (this.state.dataLoaded !== nextState.dataLoaded):
+            update = true;
+            break;
+        // click sul Gruppo
         case (this.state.selectedGroup !== nextState.selectedGroup):
             update = true;
             break;
-        case (this.state.dataLoaded !== nextState.dataLoaded):
+        // click sul Subgruppo
+        case (this.state.selectedSubgroup !== nextState.selectedSubgroup):
             update = true;
             break;
         default:
@@ -230,7 +236,8 @@ export default class Main extends React.Component {
                 appStore={this.store}
                 getData={this.getData}
                 updateStore={this.updateStore}
-                getStore={this.getStore}            />
+                getStore={this.getStore}
+            />
           </div>
         );
     }

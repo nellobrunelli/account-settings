@@ -15,12 +15,12 @@ export default class Managing extends React.Component {
         let title = '';
 
         if (this.props.appState.selectedGroup) {
-            title = title.concat(this.props.appState.selectedGroup);
+            title = title.concat(this.props.getStore('group', this.props.appState.selectedGroup));
         }
 
         if (this.props.appState.selectedSubgroup) {
             title = title.concat(' - ');
-            title = title.concat(this.props.appState.selectedSubgroup);
+            title = title.concat(this.props.getStore('subgroup', this.props.appState.selectedSubgroup));
         }
 
         return (<span>{title}</span>);
