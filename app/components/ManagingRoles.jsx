@@ -15,7 +15,10 @@ export default class ManagingRoles extends React.Component {
 
     static propTypes = {
         appState: React.PropTypes.object.isRequired,
-        updateState: React.PropTypes.func.isRequired
+        getData: React.PropTypes.func.isRequired,
+        appStore: React.PropTypes.object.isRequired,
+        updateStore: React.PropTypes.func.isRequired,
+        getStore: React.PropTypes.func.isRequired
     }
 
     handleSelect(key) {
@@ -24,6 +27,8 @@ export default class ManagingRoles extends React.Component {
     }
 
     getTabs = () => {
+        console.log('Managing Roles');
+        console.log(this.props.appState);
         if (this.props.appState.selectedGroup) {
             return (
               <Tabs activeKey={this.state.key} onSelect={this.handleSelect}>

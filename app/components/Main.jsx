@@ -24,7 +24,7 @@ export default class Main extends React.Component {
     }
 
     componentWillMount() {
-        this.getData('load');
+        this.getData('load', '');
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -45,11 +45,15 @@ export default class Main extends React.Component {
             update = false;
         }
 
+        if (!update) {
+            console.log('Non te la faccio la Update');
+        }
+
         return update;
     }
 
-    getData = (param) => {
-        switch (param) {
+    getData = (key, val) => {
+        switch (key) {
         // ->>> LOAD DELLA APP
         // case ((this.state.selectedGroup === false)):
         case ('load'):
@@ -83,7 +87,7 @@ export default class Main extends React.Component {
                 this.updateStore('users', usersList);
 
                 // update State
-                this.updateState('subscription', subscription);
+                this.updateState('group', val);
             })).catch(error => console.log(error));
             break;
         // ->>> SUBGRUPPO SELEZIONATO
@@ -103,7 +107,7 @@ export default class Main extends React.Component {
                 this.updateStore('users', usersList);
 
                 // update State
-                this.updateState('subscription', subscription);
+                this.updateState('subgroup', val);
             })).catch(error => console.log(error));
             break;
         default:
@@ -134,7 +138,8 @@ export default class Main extends React.Component {
             console.log(val);
             this.setState({
                 dataLoaded: true,
-                selectedGroup: val
+                selectedGroup: val,
+                selectedSubgroup: false
             });
             break;
         case 'subgroup':
@@ -142,7 +147,8 @@ export default class Main extends React.Component {
             console.log(val);
             this.setState({
                 dataLoaded: true,
-                selectedGroup: val
+                selectedGroup: val.group,
+                selectedSubgroup: val.subgroup
             });
             break;
         default:
@@ -224,8 +230,7 @@ export default class Main extends React.Component {
                 appStore={this.store}
                 getData={this.getData}
                 updateStore={this.updateStore}
-                getStore={this.getStore}
-            />
+                getStore={this.getStore}            />
           </div>
         );
     }
