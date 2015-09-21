@@ -27,22 +27,34 @@ export default class ManagingRoles extends React.Component {
     }
 
     getTabs = () => {
-        console.log('Managing Roles');
-        console.log(this.props.appState);
         if (this.props.appState.selectedGroup) {
             return (
               <Tabs activeKey={this.state.key} onSelect={this.handleSelect}>
                 <Tab eventKey={1} title="Users & Primary Roles">
-                  <ContainerPrimaryRole style={{
-                      backgroundColor: '#E8E8E8',
-                      marginTop: '10px'
-                  }} />
+                  <ContainerPrimaryRole
+                      style={{
+                          backgroundColor: '#E8E8E8',
+                          marginTop: '10px'
+                      }}
+                      appState={this.props.appState}
+                      getData={this.props.getData}
+                      appStore={this.props.appStore}
+                      updateStore={this.props.updateStore}
+                      getStore={this.props.getStore}
+                  />
                 </Tab>
-                <Tab eventKey={2} title="Secondary Roles">
-                    <ContainerSecondaryRole style={{
-                        backgroundColor: '#E8E8E8',
-                        marginTop: '10px'
-                    }} />
+                  <Tab eventKey={2} title="Secondary Roles">
+                    <ContainerSecondaryRole
+                        style={{
+                            backgroundColor: '#E8E8E8',
+                            marginTop: '10px'
+                        }}
+                        appState={this.props.appState}
+                        getData={this.props.getData}
+                        appStore={this.props.appStore}
+                        updateStore={this.props.updateStore}
+                        getStore={this.props.getStore}
+                    />
                 </Tab>
               </Tabs>
             );

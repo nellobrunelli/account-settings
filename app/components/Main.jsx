@@ -73,7 +73,7 @@ export default class Main extends React.Component {
                 this.updateStore('subgroups', subgroupsList);
 
                 // update State
-                this.updateState('subscription', subscription);
+                this.updateState('subscription', val, subscription);
             })).catch(error => console.log(error));
             break;
         // ->>> GRUPPO SELEZIONATO
@@ -93,7 +93,7 @@ export default class Main extends React.Component {
                 this.updateStore('users', usersList);
 
                 // update State
-                this.updateState('group', val);
+                this.updateState('group', val, subscription);
             })).catch(error => console.log(error));
             break;
         // ->>> SUBGRUPPO SELEZIONATO
@@ -113,7 +113,7 @@ export default class Main extends React.Component {
                 this.updateStore('users', usersList);
 
                 // update State
-                this.updateState('subgroup', val);
+                this.updateState('subgroup', val.subgroup, subscription);
             })).catch(error => console.log(error));
             break;
         default:
@@ -127,7 +127,7 @@ export default class Main extends React.Component {
     /**
     * Update state
     */
-    updateState = (key, val) => {
+    updateState = (key, val, subscription) => {
         console.log('Main -> updateSTATE');
         console.log(key);
         switch (key) {
@@ -136,23 +136,24 @@ export default class Main extends React.Component {
             // console.log(val);
             this.setState({
                 dataLoaded: true,
-                subscription: val.data.subscription
+                subscription: subscription.data.subscription
             });
             break;
         case 'group':
-            console.log('Update STATE group');
-            console.log(val);
             this.setState({
                 dataLoaded: true,
+                subscription: subscription.data.subscription,
                 selectedGroup: val,
                 selectedSubgroup: false
             });
+
             break;
         case 'subgroup':
             console.log('Update STATE subgroup');
             console.log(val);
             this.setState({
                 dataLoaded: true,
+                subscription: subscription.data.subscription,
                 selectedGroup: val.group,
                 selectedSubgroup: val.subgroup
             });
@@ -211,11 +212,13 @@ export default class Main extends React.Component {
             // console.log(this.store.groups);
             return this.store.groups[val];
         case 'subgroup':
+            // console.log('----------------------');
             // console.log('subgroups');
+            // console.log(this.store.subgroups[val]);
             // console.log(key);
             // console.log(val);
+            // console.log('----------------------');
             return this.store.subgroups[val];
-
         default:
             console.log('WRONG PARAM ON GET STORE');
         }

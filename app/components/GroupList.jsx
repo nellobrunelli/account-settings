@@ -19,7 +19,6 @@ export default class GroupList extends React.Component {
     getGroupsSubgroupsList = () => {
         let groups = this.props.appState.subscription.groups;
         let groupsIds = Object.keys(groups);
-
         let Panels = groupsIds.map((id, key) => {
             return (
                 <Panel

@@ -43,11 +43,11 @@ export default class BoxManaging extends React.Component {
                   getStore={this.props.getStore}
               />
               <ManagingRoles
-                  appState={this.state}
-                  appStore={this.store}
-                  getData={this.getData}
-                  updateStore={this.updateStore}
-                  getStore={this.getStore}
+                  appState={this.props.appState}
+                  getData={this.props.getData}
+                  appStore={this.props.appStore}
+                  updateStore={this.props.updateStore}
+                  getStore={this.props.getStore}
               />
           </div>
         );

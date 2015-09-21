@@ -9,7 +9,12 @@ export default class ContainerPrimaryRole extends React.Component {
     }
 
     static propTypes = {
-        style: React.PropTypes.object
+        style: React.PropTypes.object,
+        appState: React.PropTypes.object.isRequired,
+        getData: React.PropTypes.func.isRequired,
+        appStore: React.PropTypes.object.isRequired,
+        updateStore: React.PropTypes.func.isRequired,
+        getStore: React.PropTypes.func.isRequired
     }
 
     render() {

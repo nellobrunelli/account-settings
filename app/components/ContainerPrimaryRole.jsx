@@ -7,13 +7,43 @@ export default class ContainerPrimaryRole extends React.Component {
     constructor(props) {
         super(props);
     }
+
     static propTypes = {
-        style: React.PropTypes.object
+        style: React.PropTypes.object,
+        appState: React.PropTypes.object.isRequired,
+        getData: React.PropTypes.func.isRequired,
+        appStore: React.PropTypes.object.isRequired,
+        updateStore: React.PropTypes.func.isRequired,
+        getStore: React.PropTypes.func.isRequired
     }
+
+    getPrimaryRoles = () => {
+        console.log('Managin Primary Roles');
+        console.log(this.props.appState);
+        switch (true) {
+        // Selezionato Gruppo
+        // case ((this.props.appState.selectedGroup) && (!this.props.appState.selectedSubgroup)):
+        case (this.props.appState.selectedGroup !== false) && (this.props.appState.selectedSubgroup === false):
+            console.log('*** GRUPPO ***');
+            break;
+        // Selezionato Subgruppo
+        case (this.props.appState.selectedGroup !== false) && (this.props.appState.selectedSubgroup !== false):
+            console.log('*** SUB GRUPPO ***');
+            break;
+        // Nulla è stato selezionato
+        default:
+
+            console.log('** NULLA ***');
+        }
+    }
+
     render() {
+        let getPrimaryRoles = this.getPrimaryRoles();
+
         const {style} = this.props;
         return (
             <div style={style}>
+                  {getPrimaryRoles}
                   <RoleAvailability roleData={{
                       name: 'Scout',
                       availability: '3/4 avaiable'
