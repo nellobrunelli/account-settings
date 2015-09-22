@@ -8,7 +8,8 @@ export default class BoxSideBar extends React.Component {
     }
 
     static propTypes = {
-        groups: React.PropTypes.object.isRequired
+        groups: React.PropTypes.object.isRequired,
+        getData: React.PropTypes.func.isRequired
     }
 
     render() {
@@ -35,11 +36,19 @@ export default class BoxSideBar extends React.Component {
           }}>
               <GroupList
                   groups={groups}
-                  handleGroupSelect={groupId => {
-                      console.log('group selected', groupId);
+                  handleGroupSelect = {groupId => {
+                      console.log('Group id ', groupId);
+                      this.props.getData('group', groupId);
                   }}
-                  handleSubgroupSelect={(groupId, subgroupId) => {
+                  handleSubgroupSelect = {(groupId, subgroupId) => {
                       console.log('subgroup selected', groupId, subgroupId);
+                      this.props.getData(
+                          'subgroup',
+                          {
+                              groupId: groupId,
+                              subgroupId: subgroupId
+                          }
+                      );
                   }}
               />
           </div>

@@ -17,7 +17,7 @@ export default class BoxManaging extends React.Component {
 
     handleSelect(key) {
         this.setState({key});
-        console.log('selected tab ' + key);
+        console.log('selec ted tab ' + key);
     }
 
     render() {
@@ -34,7 +34,7 @@ export default class BoxManaging extends React.Component {
               <Managing
                   getData={this.props.getData}
               />
-          {/* <ManagingRoles
+              {/* <ManagingRoles
                   getData={this.props.getData}
               />*/}
           </div>
