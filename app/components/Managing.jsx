@@ -4,24 +4,16 @@ export default class Managing extends React.Component {
     }
 
     static propTypes = {
-        appState: React.PropTypes.object.isRequired,
-        getData: React.PropTypes.func.isRequired,
-        appStore: React.PropTypes.object.isRequired,
-        updateStore: React.PropTypes.func.isRequired,
-        getStore: React.PropTypes.func.isRequired
+        groupName: React.PropTypes.string.isRequired,
+        subGroupName: React.PropTypes.string.isRequired
     }
 
     getManagedThings = () => {
         let title = '';
 
-        if (this.props.appState.selectedGroup) {
-            title = title.concat(this.props.getStore('group', this.props.appState.selectedGroup));
-        }
-
-        if (this.props.appState.selectedSubgroup) {
-            title = title.concat(' - ');
-            title = title.concat(this.props.getStore('subgroup', this.props.appState.selectedSubgroup));
-        }
+        title = `${this.props.groupName}` + this.props.subGroupName
+            ? ` - ${this.props.subGroupName}`
+            : '';
 
         return (<span>{title}</span>);
     }

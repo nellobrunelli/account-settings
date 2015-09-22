@@ -1,6 +1,8 @@
 import axios from 'axios';
 import BoxSideBar from './BoxSideBar';
-import BoxManaging from './BoxManaging';
+// import BoxManaging from './BoxManaging';
+
+import appStore from '../stores/appStore';
 
 export default class Main extends React.Component {
     constructor(props) {
@@ -13,13 +15,6 @@ export default class Main extends React.Component {
             subscription: {
                 groups: {}
             }
-        };
-
-        this.store = {
-            groups: {},
-            subgroups: {},
-            roles: {},
-            users: {}
         };
     }
 
@@ -69,8 +64,8 @@ export default class Main extends React.Component {
                 axios.get('http://wyrest/v1/cerebrum/groups/subscriptionsubgroups?subscriptionId=123&access_token=frenk')
             ]).then(axios.spread((subscription, groupsList, subgroupsList) => {
                 // update Store
-                this.updateStore('groups', groupsList);
-                this.updateStore('subgroups', subgroupsList);
+                appStore.updateStore('groups', groupsList);
+                appStore.updateStore('subgroups', subgroupsList);
 
                 // update State
                 this.updateState('subscription', val, subscription);
@@ -87,10 +82,10 @@ export default class Main extends React.Component {
                 axios.get('http://wyrest/v1/cerebrum/groups/subscriptionusers?subscriptionId=1&access_token=frenk')
             ]).then(axios.spread((subscription, groupsList, subgroupsList, rolesList, usersList) => {
                 // update Store
-                this.updateStore('groups', groupsList);
-                this.updateStore('subgroups', subgroupsList);
-                this.updateStore('roles', rolesList);
-                this.updateStore('users', usersList);
+                appStore.updateStore('groups', groupsList);
+                appStore.updateStore('subgroups', subgroupsList);
+                appStore.updateStore('roles', rolesList);
+                appStore.updateStore('users', usersList);
 
                 // update State
                 this.updateState('group', val, subscription);
@@ -107,10 +102,10 @@ export default class Main extends React.Component {
                 axios.get('http://wyrest/v1/cerebrum/groups/subscriptionusers?subscriptionId=1&access_token=frenk')
             ]).then(axios.spread((subscription, groupsList, subgroupsList, rolesList, usersList) => {
                 // update Store
-                this.updateStore('groups', groupsList);
-                this.updateStore('subgroups', subgroupsList);
-                this.updateStore('roles', rolesList);
-                this.updateStore('users', usersList);
+                appStore.updateStore('groups', groupsList);
+                appStore.updateStore('subgroups', subgroupsList);
+                appStore.updateStore('roles', rolesList);
+                appStore.updateStore('users', usersList);
 
                 // update State
                 this.updateState('subgroup', val.subgroup, subscription);
@@ -164,83 +159,15 @@ export default class Main extends React.Component {
         }
     }
 
-    /**
-    * Update store
-    */
-    updateStore = (key, val) => {
-        console.log('Main -> updateSTORE');
-        switch (key) {
-        case 'groups':
-            // console.log('subgroups');
-            // console.log(key);
-            // console.log(val);
-            this.store.groups = val.data.groups;
-            break;
-        case 'subgroups':
-            // console.log('subgroups');
-            // console.log(key);
-            // console.log(val);
-            this.store.subgroups = val.data.subgroups;
-            break;
-        case 'roles':
-            // console.log('roles');
-            // console.log(key);
-            // console.log(val);
-            this.store.roles = val.data.roles;
-            break;
-        case 'users':
-            // console.log('users');
-            // console.log(key);
-            // console.log(val);
-            this.store.users = val.data.users;
-            break;
-        default:
-            console.log('WRONG PARAM ON UPDATE STORE');
-        }
-    }
-
-    /**
-    * Update store
-    */
-    getStore = (key, val) => {
-        console.log('Main -> getSTORE');
-        switch (key) {
-        case 'group':
-            // console.log('groups');
-            // console.log(key);
-            // console.log(val);
-            // console.log(this.store.groups);
-            return this.store.groups[val];
-        case 'subgroup':
-            // console.log('----------------------');
-            // console.log('subgroups');
-            // console.log(this.store.subgroups[val]);
-            // console.log(key);
-            // console.log(val);
-            // console.log('----------------------');
-            return this.store.subgroups[val];
-        default:
-            console.log('WRONG PARAM ON GET STORE');
-        }
-    }
-
     render() {
         return (
           <div>
             <BoxSideBar
-                appState={this.state}
-                appStore={this.store}
-                getData={this.getData}
-                updateStore={this.updateStore}
-                getStore={this.getStore}
+                groups={this.state.subscription.groups}
             />
-            <BoxManaging
-                appState={this.state}
-                appStore={this.store}
-                getData={this.getData}
-                updateStore={this.updateStore}
-                getStore={this.getStore}
-            />
+                {/* <BoxManaging
+                    getData={this.getData}
+                />*/}
           </div>
         );
     }

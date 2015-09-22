@@ -14,11 +14,7 @@ export default class ManagingRoles extends React.Component {
     }
 
     static propTypes = {
-        appState: React.PropTypes.object.isRequired,
-        getData: React.PropTypes.func.isRequired,
-        appStore: React.PropTypes.object.isRequired,
-        updateStore: React.PropTypes.func.isRequired,
-        getStore: React.PropTypes.func.isRequired
+        getData: React.PropTypes.func.isRequired
     }
 
     handleSelect(key) {

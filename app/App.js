@@ -4,6 +4,50 @@ import './css/ReactCSSTransitionGroup.css';
 import Main from './components/Main';
 React.render(<Main />, document.getElementById('app'));
 
+// TEST AUTOMATICi COMPONENTE GroupList
+// import GroupList from './components/GroupList';
+// window.React = React;
+// window.comp = (<GroupList
+//     groups={[{
+//         id: 123,
+//         name: 'brokki',
+//         subgroups: [{
+//             id: 123,
+//             name: 'subbrokki'
+//         }, {
+//             id: 124,
+//             name: 'subbrokki 2'
+//         }]
+//     }, {
+//         id: 125,
+//         name: 'brokkissimi',
+//         subgroups: [{
+//             id: 123,
+//             name: 'subbrokki'
+//         }]
+//     }]}
+//     handleGroupSelect={() => {
+//         console.log('gruppo selezionato');
+//     }}
+//     handleSubgroupSelect={() => {
+//         console.log('subgruppo selezionato');
+//     }}
+// />);
+//
+//
+// if ((React.renderToStaticMarkup(comp).match(/subgroup/g).length !== 3)) {
+//     console.log('%c Test GroupList -> Groups KO', 'background: red; color: white;');
+// } else {
+//     console.log('%c Test GroupList -> Groups OK', 'background: green; color: white;');
+// }
+//
+// if ((React.renderToStaticMarkup(comp).match(/group-panel/g).length !== 2)) {
+//     console.log('%c Test GroupList -> Subgruppi ok', 'background: red; color: white;');
+// } else {
+//     console.log('%c Test GroupList -> Groups KO', 'background: green; color: white;');
+// }
+
+
 // import ContainerRole from './components/ContainerRole';
 // React.render(<ContainerRole />, document.getElementById('app'));
 

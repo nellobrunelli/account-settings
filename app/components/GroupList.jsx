@@ -6,37 +6,35 @@ export default class GroupList extends React.Component {
     }
 
     static propTypes = {
-        appState: React.PropTypes.object.isRequired,
-        getData: React.PropTypes.func.isRequired,
-        appStore: React.PropTypes.object.isRequired,
-        updateStore: React.PropTypes.func.isRequired,
-        getStore: React.PropTypes.func.isRequired
+        groups: React.PropTypes.array.isRequired,
+        handleGroupSelect: React.PropTypes.func.isRequired,
+        handleSubgroupSelect: React.PropTypes.func.isRequired
     }
 
     /**
     * Lista dei gruppi e subgruppi
     */
     getGroupsSubgroupsList = () => {
-        let groups = this.props.appState.subscription.groups;
-        let groupsIds = Object.keys(groups);
-        let Panels = groupsIds.map((id, key) => {
+        let groups = this.props.groups;
+        let Panels = groups.map((group, key) => {
             return (
                 <Panel
-                    header={this.props.getStore('group', id)}
+                    header={group.name}
                     style={{width: '300px'}}
                     key={key}
-                    eventKey={id}>
+                    eventKey={group.id}
+                    className="group-panel">
                     <ButtonGroup vertical>
                         {
-                            groups[id].subgroups.map((subgroupId, i) => {
+                            group.subgroups.map((subgroup, i) => {
                                 return (
                                     <MenuItem
                                         key={i}
-                                        group={id}
-                                        subgroup={subgroupId}
-                                        onSelect={this.handleSubgroupSelect.bind(this, id, subgroupId)}>
-                                        <Button>
-                                            {this.props.getStore('subgroup', subgroupId)}
+                                        group={group.id}
+                                        subgroup={subgroup.id}
+                                        onSelect={this.props.handleSubgroupSelect.bind(this, group.id, subgroup.id)}>
+                                        <Button className="subgroup">
+                                            {subgroup.name}
                                         </Button>
                                     </MenuItem>
                                 );
@@ -48,24 +46,10 @@ export default class GroupList extends React.Component {
         });
 
         return (
-            <PanelGroup onSelect={this.handleGroupSelect} accordion>
+            <PanelGroup onSelect={this.props.handleGroupSelect} accordion>
                 {Panels}
             </PanelGroup>
         );
-    }
-
-    handleGroupSelect = (key) => {
-        // arriva da componente Panel-> onSelect ... viene passato ciò che è nell'attributo key
-        this.props.getData('group', key);
-    }
-
-    handleSubgroupSelect = (group, subgroup) => {
-        console.log(group);
-        console.log(subgroup);
-        this.props.getData('subgroup', {
-            group: group,
-            subgroup: subgroup
-        });
     }
 
     render() {

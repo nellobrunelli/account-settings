@@ -1,5 +1,5 @@
 import Managing from './Managing';
-import ManagingRoles from './ManagingRoles';
+// import ManagingRoles from './ManagingRoles';
 
 export default class BoxManaging extends React.Component {
     constructor(props) {
@@ -12,11 +12,7 @@ export default class BoxManaging extends React.Component {
     }
 
     static propTypes = {
-        appState: React.PropTypes.object.isRequired,
-        getData: React.PropTypes.func.isRequired,
-        appStore: React.PropTypes.object.isRequired,
-        updateStore: React.PropTypes.func.isRequired,
-        getStore: React.PropTypes.func.isRequired
+        getData: React.PropTypes.func.isRequired
     }
 
     handleSelect(key) {
@@ -36,19 +32,11 @@ export default class BoxManaging extends React.Component {
               padding: '1%'
           }}>
               <Managing
-                  appState={this.props.appState}
                   getData={this.props.getData}
-                  appStore={this.props.appStore}
-                  updateStore={this.props.updateStore}
-                  getStore={this.props.getStore}
               />
-              <ManagingRoles
-                  appState={this.props.appState}
+          {/* <ManagingRoles
                   getData={this.props.getData}
-                  appStore={this.props.appStore}
-                  updateStore={this.props.updateStore}
-                  getStore={this.props.getStore}
-              />
+              />*/}
           </div>
         );
     }
