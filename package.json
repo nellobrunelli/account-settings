@@ -9,7 +9,7 @@
   "scripts": {
     "start": "webpack-dev-server --inline --host 0.0.0.0",
     "deploy": "NODE_ENV=production webpack -p && npm shrinkwrap",
-    "test": "babel-node test/tests.js",
+    "test": "babel-node --stage=0 test/tests.js",
     "check": "npm-check -s",
     "json-server": "json-server --watch db.json",
     "lint": "eslint app --ext .js, .jsx || true"

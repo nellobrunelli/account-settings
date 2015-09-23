@@ -1,5 +1,6 @@
 import Managing from './Managing';
-// import ManagingRoles from './ManagingRoles';
+import appStore from '../stores/appStore';
+import ManagingRoles from './ManagingRoles';
 
 export default class BoxManaging extends React.Component {
     constructor(props) {
@@ -12,7 +13,10 @@ export default class BoxManaging extends React.Component {
     }
 
     static propTypes = {
-        getData: React.PropTypes.func.isRequired
+        subscription: React.PropTypes.object.isRequired,
+        getData: React.PropTypes.func.isRequired,
+        getStore: React.PropTypes.func.isRequired,
+        groups: React.PropTypes.object.isRequired
     }
 
     handleSelect(key) {
@@ -20,7 +24,20 @@ export default class BoxManaging extends React.Component {
         console.log('selec ted tab ' + key);
     }
 
+    getManagingTitle = () => {
+        let title = '';
+        let groupName = appStore.getStore('group', this.props.subscription.selectedGroup);
+        let subgroupName = appStore.getStore('subgroup', this.props.subscription.selectedSubgroup);
+
+        title = groupName ? `${groupName}` : '';
+        title = title.concat(subgroupName ? ` - ${subgroupName.name}` : '');
+
+        return (<span>{title}</span>);
+    }
+
     render() {
+        let getManagingTitle = this.getManagingTitle();
+
         return (
           <div style={{
               backgroundColor: '#E0E0E0',
@@ -32,11 +49,14 @@ export default class BoxManaging extends React.Component {
               padding: '1%'
           }}>
               <Managing
-                  getData={this.props.getData}
+                  key={1}
+                  managedTitle={getManagingTitle}
               />
-              {/* <ManagingRoles
+              <ManagingRoles
+                  key={2}
                   getData={this.props.getData}
-              />*/}
+                  subscription={this.props.subscription}
+              />
           </div>
         );
     }

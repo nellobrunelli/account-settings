@@ -4,28 +4,16 @@ export default class Managing extends React.Component {
     }
 
     static propTypes = {
-        groupName: React.PropTypes.string.isRequired,
-        subGroupName: React.PropTypes.string.isRequired
-    }
-
-    getManagedThings = () => {
-        let title = '';
-
-        title = `${this.props.groupName}` + this.props.subGroupName
-            ? ` - ${this.props.subGroupName}`
-            : '';
-
-        return (<span>{title}</span>);
+        managedTitle: React.PropTypes.string.isRequired
     }
 
     render() {
-        let getManagedThings = this.getManagedThings();
         return (
           <div style={{
               fontSize: 22,
               marginBottom: '10px'
           }}>
-                <div>{getManagedThings}</div>
+                <div>{this.props.managedTitle}</div>
           </div>
         );
     }

@@ -5,6 +5,7 @@ import Main from './components/Main';
 React.render(<Main />, document.getElementById('app'));
 
 // TEST AUTOMATICi COMPONENTE GroupList
+// TEST AUTOMATICi COMPONENTE GroupList
 // import GroupList from './components/GroupList';
 // window.React = React;
 // window.comp = (<GroupList
@@ -47,6 +48,22 @@ React.render(<Main />, document.getElementById('app'));
 //     console.log('%c Test GroupList -> Groups KO', 'background: green; color: white;');
 // }
 
+// ================================================================================
+
+// import Managing from './components/Managing';
+// window.React = React;
+// window.comp = (<Managing
+//     managedTitle="Milan AC - Brocchi"
+// />);
+//
+// if ((React.renderToStaticMarkup(comp).match(/Milan AC - Brocchi/g).length !== 1)) {
+//     console.log('%c Test Managing ->  KO', 'background: red; color: white;');
+// } else {
+//     console.log('%c Test Managing ->  OK', 'background: green; color: white;');
+// }
+
+
+// ================================================================================
 
 // import ContainerRole from './components/ContainerRole';
 // React.render(<ContainerRole />, document.getElementById('app'));

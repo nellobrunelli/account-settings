@@ -22,7 +22,26 @@ export default {
             // console.log(key);
             // console.log(val);
             // console.log('----------------------');
+            if (val === false) {
+                return false;
+            }
             return store.subgroups[val];
+        case 'roles':
+            // console.log('----------------------');
+            // console.log('roles');
+            // console.log(this.store.roles[val]);
+            // console.log(key);
+            // console.log(val);
+            // console.log('----------------------');
+            return store.roles[val];
+        case 'users':
+            // console.log('----------------------');
+            // console.log('users');
+            // console.log(this.store.roles[val]);
+            // console.log(key);
+            // console.log(val);
+            // console.log('----------------------');
+            return store.users[val];
         default:
             console.log('WRONG PARAM ON GET STORE');
         }
@@ -30,6 +49,14 @@ export default {
 
     getGroups() {
         return store.groups;
+    },
+
+    getRoles() {
+        return store.roles;
+    },
+
+    getUsers() {
+        return store.users;
     },
 
     updateStore(key, val) {

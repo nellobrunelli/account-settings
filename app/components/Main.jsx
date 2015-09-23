@@ -1,6 +1,6 @@
 import axios from 'axios';
 import BoxSideBar from './BoxSideBar';
-// import BoxManaging from './BoxManaging';
+import BoxManaging from './BoxManaging';
 
 import appStore from '../stores/appStore';
 
@@ -130,7 +130,6 @@ export default class Main extends React.Component {
         case 'subgroup':
             console.log('Update STATE subgroup');
             console.log(val);
-            debugger;
             this.setState({
                 dataLoaded: true,
                 subscription: subscription.data.subscription,
@@ -147,13 +146,14 @@ export default class Main extends React.Component {
     render() {
         return (
           <div>
-            <BoxSideBar
-                groups={this.state.subscription.groups}
-                getData={this.getData}
-            />
-                {/* <BoxManaging
+                <BoxSideBar
+                    groups={this.state.subscription.groups}
                     getData={this.getData}
-                />*/}
+                />
+                <BoxManaging
+                    subscription={this.state}
+                    getData={this.getData}
+                />
           </div>
         );
     }

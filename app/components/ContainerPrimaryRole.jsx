@@ -32,7 +32,6 @@ export default class ContainerPrimaryRole extends React.Component {
             break;
         // Nulla è stato selezionato
         default:
-
             console.log('** NULLA ***');
         }
     }

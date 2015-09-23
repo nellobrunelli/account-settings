@@ -1,5 +1,4 @@
 import GroupList from './GroupList';
-
 import appStore from '../stores/appStore';
 
 export default class BoxSideBar extends React.Component {
@@ -20,7 +19,7 @@ export default class BoxSideBar extends React.Component {
                 subgroups: this.props.groups[gId].subgroups.map(sgId => {
                     return {
                         id: sgId,
-                        name: appStore.getStore('subgroup', sgId)
+                        name: appStore.getStore('subgroup', sgId).name
                     };
                 })
             };
