@@ -3,9 +3,6 @@ const { Button } = ReactBootstrap;
 export default class AddUser extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            roleId: this.props.roleId
-        };
     }
 
     addUser() {
@@ -20,7 +17,3 @@ export default class AddUser extends React.Component {
         );
     }
 }
-
-AddUser.propTypes = {
-    roleId: React.PropTypes.object.isRequired
-};

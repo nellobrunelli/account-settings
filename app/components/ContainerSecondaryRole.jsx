@@ -1,6 +1,6 @@
 import RoleAvailability from './RoleAvailability';
 import RoleDescription from './RoleDescription';
-import PrimaryRolePersonList from './PrimaryRolePersonList';
+// import PrimaryRolePersonList from './PrimaryRolePersonList';
 
 export default class ContainerPrimaryRole extends React.Component {
 
@@ -25,8 +25,8 @@ export default class ContainerPrimaryRole extends React.Component {
                       name: 'Academy Supervisor',
                       availability: '0/1 avaiable'
                   }} />
-                  <RoleDescription description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. '} />
-                  <PrimaryRolePersonList personList={['Tizio']} />
+              <RoleDescription description={'Chiamato dal secondary Role'} />
+              {/* <PrimaryRolePersonList personList={['Tizio']} /> */}
             </div>
         );
     }
