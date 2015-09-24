@@ -1,7 +1,7 @@
 import appStore from '../stores/appStore';
 import RoleAvailability from './RoleAvailability';
 import RoleDescription from './RoleDescription';
-import PrimaryRolePersons from './PrimaryRolePersons';
+import RolePersons from './RolePersons';
 import RolePersonsAssigned from './RolePersonsAssigned';
 
 export default class ContainerSecondaryRole extends React.Component {
@@ -60,7 +60,7 @@ export default class ContainerSecondaryRole extends React.Component {
                                       <RoleDescription
                                           description={roleObj.description}
                                       />
-                                      <PrimaryRolePersons
+                                      <RolePersons
                                           usersAvaiable={usersAvaiable}
                                       />
                                       <RolePersonsAssigned

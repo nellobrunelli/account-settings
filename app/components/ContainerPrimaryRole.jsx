@@ -1,7 +1,7 @@
 import appStore from '../stores/appStore';
 import RoleAvailability from './RoleAvailability';
 import RoleDescription from './RoleDescription';
-import PrimaryRolePersons from './PrimaryRolePersons';
+import RolePersons from './RolePersons';
 import RolePersonsAssigned from './RolePersonsAssigned';
 import AddUser from './AddUser';
 
@@ -60,7 +60,7 @@ export default class ContainerPrimaryRole extends React.Component {
                                   <AddUser>
                                       Add User
                                   </AddUser>
-                                  <PrimaryRolePersons
+                                  <RolePersons
                                       usersAvaiable={usersAvaiable}
                                   />
                                   <RolePersonsAssigned
