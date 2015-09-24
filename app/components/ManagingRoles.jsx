@@ -45,7 +45,7 @@ export default class ManagingRoles extends React.Component {
     // }
 
     handleSelect(key) {
-        this.setState({key});
+        // this.setState({key});
         console.log('selected tab ' + key);
     }
 

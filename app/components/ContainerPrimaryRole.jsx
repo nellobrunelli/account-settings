@@ -56,7 +56,9 @@ export default class ContainerPrimaryRole extends React.Component {
                                   <RoleDescription
                                       description={roleObj.description}
                                   />
-                                  <AddUser>Add User</AddUser>
+                                  <AddUser>
+                                      Add User
+                                  </AddUser>
                                   <PrimaryRolePersons
                                       usersAvaiable={usersAvaiable}
                                   />

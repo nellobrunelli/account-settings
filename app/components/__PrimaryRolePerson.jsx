@@ -24,14 +24,14 @@ export default class PrimaryRolePerson extends React.Component {
         return (
             <div>
                 {
-                    Object.keys(this.props.usersAvaiable).map((userId) => {
+                    Object.keys(usersAvaiable).map((userId) => {
                         return (
                             <div>
                                 <span
                                     style={{
                                         margin: 10
                                     }}>
-                                    {this.props.usersAvaiable[userId]}
+                                    {usersAvaiable[userId]}
                                 </span>
                                 <Button
                                     key={userId}
