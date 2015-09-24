@@ -3,7 +3,6 @@ import RoleAvailability from './RoleAvailability';
 import RoleDescription from './RoleDescription';
 import PrimaryRolePersons from './PrimaryRolePersons';
 import RolePersonsAssigned from './RolePersonsAssigned';
-// import AddUser from './AddUser';
 
 export default class ContainerSecondaryRole extends React.Component {
     constructor(props) {
@@ -28,11 +27,10 @@ export default class ContainerSecondaryRole extends React.Component {
                             let role = group.roles[roleId];
 
                             // Ciclo sui secondary Roles
-                            Object.keys(role.secondaryRoles).map((secondaryRoleId) => {
+                            return Object.keys(role.secondaryRoles).map((secondaryRoleId) => {
                                 let secondaryRole = role.secondaryRoles[secondaryRoleId];
                                 let roleAvailability = secondaryRole.avaiable[0] + '/' + role.avaiable[1] + ' avaiable';
                                 let roleObj = appStore.getStore('roles', secondaryRoleId);
-
 
                                 // build avaiable users object
                                 let usersAvaiable = {};
@@ -49,17 +47,6 @@ export default class ContainerSecondaryRole extends React.Component {
                                         description: appStore.getStore('users', userId)
                                     };
                                 });
-
-                                console.log('*** secondary roles ***');
-                                console.log(secondaryRoleId);
-                                console.log(secondaryRole);
-                                console.log('------------------------');
-                                console.log(usersAssigned);
-                                console.log(usersAvaiable);
-                                console.log(roleAvailability);
-                                console.log(roleObj);
-                                console.log('***********************');
-
 
                                 return (
                                     <div>

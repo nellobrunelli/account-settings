@@ -23,6 +23,7 @@ export default class ContainerPrimaryRole extends React.Component {
             return (
                 <div>
                     {
+                        // Ciclo sui Roles
                         Object.keys(group.roles).map((roleId) => {
                             let role = group.roles[roleId];
                             let roleAvailability = role.avaiable[0] + '/' + role.avaiable[1] + ' avaiable';
