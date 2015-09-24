@@ -19,36 +19,9 @@ export default class ManagingRoles extends React.Component {
         subscription: React.PropTypes.object.isRequired
     }
 
-    // componentDidUpdate() {
-    //     let subscription = this.props.subscription;
-    //     let selectedGroup = subscription.selectedGroup;
-    //     let groupData = {};
-    //
-    //     if (selectedGroup !== false) {
-    //         console.log('GRUPPO O SUBGRUPPO SELEZIONATO: preparo dati per Primary e Secondary Roles');
-    //         let group = subscription.subscription.groups[selectedGroup];
-    //         let storeGroups = appStore.getGroups();
-    //         let storeRoles = appStore.getRoles();
-    //         let storeUsers = appStore.getUsers();
-    //
-    //         groupData = {
-    //             group: group,
-    //             storeGroups: storeGroups,
-    //             storeRoles: storeRoles,
-    //             storeUsers: storeUsers
-    //         };
-    //         console.log(groupData);
-    //     } else {
-    //         console.log('nessuna selezione');
-    //     }
-    //     return groupData;
-    // }
-
     handleSelect(key) {
-        // this.setState({key});
         console.log('selected tab ' + key);
     }
-
 
     getRoles = () => {
         let subscription = this.props.subscription;
@@ -57,17 +30,8 @@ export default class ManagingRoles extends React.Component {
         let groupData = {};
 
         if ((selectedGroup !== false) || (selectedSubgroup !== false)) {
-            // Gruppo o Subgruppo selezionato
-            // console.log('GRUPPO O SUBGRUPPO SELEZIONATO: preparo dati per Primary e Secondary Roles');
-            // let storeGroups = appStore.getGroups();
-            // let storeRoles = appStore.getRoles();
-            // let storeUsers = appStore.getUsers();
-
             groupData = {
                 subscription: subscription
-                // storeGroups: storeGroups,
-                // storeRoles: storeRoles,
-                // storeUsers: storeUsers
             };
         }
 
@@ -76,28 +40,30 @@ export default class ManagingRoles extends React.Component {
 
     getTabs = () => {
         let getRoles = this.getRoles();
-        return (
-            <Tabs>
-                <Tab eventKey={1} title="Users & Primary Roles">
-                  <ContainerPrimaryRole
-                      style={{
-                          backgroundColor: '#E8E8E8',
-                          marginTop: '10px'
-                      }}
-                      subscription={getRoles}
-                  />
-                </Tab>
-                <Tab eventKey={2} title="Secondary Roles">
-                    <ContainerSecondaryRole
-                        style={{
-                            backgroundColor: '#E8E8E8',
-                            marginTop: '10px'
-                        }}
-                      subscription={getRoles}
-                    />
-                </Tab>
-            </Tabs>
-        );
+        if (Object.keys(getRoles).length > 0) {
+            return (
+                <Tabs>
+                    <Tab eventKey={1} title="Users & Primary Roles">
+                      <ContainerPrimaryRole
+                          style={{
+                              backgroundColor: '#E8E8E8',
+                              marginTop: '10px'
+                          }}
+                          subscription={getRoles}
+                      />
+                    </Tab>
+                    <Tab eventKey={2} title="Secondary Roles">
+                        <ContainerSecondaryRole
+                          style={{
+                              backgroundColor: '#E8E8E8',
+                              marginTop: '10px'
+                          }}
+                          subscription={getRoles}
+                        />
+                    </Tab>
+                </Tabs>
+            );
+        }
     }
 
     render() {
