@@ -71,16 +71,13 @@ export default class ManagingRoles extends React.Component {
             };
         }
 
-        // console.log('*** Managing Roles ***');
-        // console.log(subscription);
-
         return groupData;
     }
 
     getTabs = () => {
         let getRoles = this.getRoles();
         return (
-            <Tabs activeKey={this.state.key} onSelect={this.handleSelect}>
+            <Tabs>
                 <Tab eventKey={1} title="Users & Primary Roles">
                   <ContainerPrimaryRole
                       style={{
@@ -90,7 +87,7 @@ export default class ManagingRoles extends React.Component {
                       subscription={getRoles}
                   />
                 </Tab>
-                  <Tab eventKey={2} title="Secondary Roles">
+                <Tab eventKey={2} title="Secondary Roles">
                     <ContainerSecondaryRole
                         style={{
                             backgroundColor: '#E8E8E8',
@@ -98,7 +95,7 @@ export default class ManagingRoles extends React.Component {
                         }}
                       subscription={getRoles}
                     />
-                 </Tab>
+                </Tab>
             </Tabs>
         );
     }
