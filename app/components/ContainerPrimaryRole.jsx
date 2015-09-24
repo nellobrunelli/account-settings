@@ -18,8 +18,16 @@ export default class ContainerPrimaryRole extends React.Component {
     getPrimaryRoles = () => {
         if (Object.keys(this.props.subscription).length > 0) {
             let selectedGroup = this.props.subscription.subscription.selectedGroup;
-            let group = this.props.subscription.subscription.subscription.groups[selectedGroup];
+            let selectedSubgroup = this.props.subscription.subscription.selectedSubgroup;
 
+            let group = false;
+            if (selectedSubgroup === false) {
+                // Selezionato Gruppo
+                group = this.props.subscription.subscription.subscription.groups[selectedGroup];
+            } else {
+                // Selezionato Subgruppo
+                group = this.props.subscription.subscription.subscription.groups[selectedGroup].selectedSubgroup[selectedSubgroup];
+            }
             return (
                 <div>
                     {
