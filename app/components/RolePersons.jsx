@@ -23,15 +23,12 @@ export default class PrimaryRolePersons extends React.Component {
                 {
                     Object.keys(this.props.usersAvaiable).map((userId) => {
                         return (
-                            <div>
-                                <MenuItem
-                                    onSelect={this.handleSelect.bind(this, userId)}
-                                    eventKey={userId}
-                                    href="#"
-                                >
-                                    {this.props.usersAvaiable[userId]}
-                                </MenuItem>
-                            </div>
+                            <MenuItem
+                                onSelect={this.handleSelect.bind(this, userId)}
+                                eventKey={userId}
+                            >
+                                {this.props.usersAvaiable[userId]}
+                            </MenuItem>
                         );
                     })
                 }
