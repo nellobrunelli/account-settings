@@ -29,6 +29,7 @@ export default class GroupList extends React.Component {
                             group.subgroups.map((subgroup, i) => {
                                 return (
                                     <MenuItem
+                                        style={{listStyleType: 'none'}}
                                         key={i}
                                         group={group.id}
                                         subgroup={subgroup.id}

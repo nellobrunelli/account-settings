@@ -39,7 +39,7 @@ export default class ContainerSecondaryRole extends React.Component {
 
             return (
                 <div>
-                  <hr></hr>
+                  <hr style={{borderColor: '#337ab7'}}></hr>
                   <RoleAvailability
                       roleData={{
                           name: roleObj.name,

@@ -41,7 +41,7 @@ export default class ManagingRoles extends React.Component {
         let getRoles = this.getRoles();
         if (Object.keys(getRoles).length > 0) {
             return (
-                <Tabs>
+                <Tabs bsStyle="pills">
                     <Tab eventKey={1} title="Users & Primary Roles">
                       <ContainerPrimaryRole
                           style={{
