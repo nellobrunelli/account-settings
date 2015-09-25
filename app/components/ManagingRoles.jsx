@@ -1,6 +1,5 @@
 import ContainerPrimaryRole from './ContainerPrimaryRole';
 import ContainerSecondaryRole from './ContainerSecondaryRole';
-// import appStore from '../stores/appStore';
 const { Tabs, Tab } = ReactBootstrap;
 const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 

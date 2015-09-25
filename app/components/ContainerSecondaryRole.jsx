@@ -14,6 +14,52 @@ export default class ContainerSecondaryRole extends React.Component {
         subscription: React.PropTypes.object.isRequired
     }
 
+    exposeSubgroups = (role) => {
+        // Ciclo sui secondary Roles
+        return Object.keys(role.secondaryRoles).map((secondaryRoleId) => {
+            let secondaryRole = role.secondaryRoles[secondaryRoleId];
+            let roleAvailability = secondaryRole.avaiable[0] + '/' + role.avaiable[1] + ' avaiable';
+            let roleObj = appStore.getStore('roles', secondaryRoleId);
+
+            // build avaiable users object
+            let usersAvaiable = {};
+            secondaryRole.users.map((userId) => {
+                usersAvaiable[userId] = appStore.getStore('users', userId);
+            });
+
+            // build assigned users object
+            let usersAssigned = {};
+            secondaryRole.assignedUsers.map((userId) => {
+                usersAssigned[userId] = {
+                    roleId: secondaryRoleId,
+                    userId: userId,
+                    description: appStore.getStore('users', userId)
+                };
+            });
+
+            return (
+                <div>
+                  <hr></hr>
+                  <RoleAvailability
+                      roleData={{
+                          name: roleObj.name,
+                          availability: roleAvailability
+                      }}
+                  />
+                  <RoleDescription
+                      description={roleObj.description}
+                  />
+                  <RolePersons
+                      usersAvaiable={usersAvaiable}
+                  />
+                  <RolePersonsAssigned
+                      usersAssigned={usersAssigned}
+                  />
+                </div>
+            );
+        });
+    }
+
     getSecondaryRoles = () => {
         if (Object.keys(this.props.subscription).length > 0) {
             let selectedGroup = this.props.subscription.subscription.selectedGroup;
@@ -34,50 +80,10 @@ export default class ContainerSecondaryRole extends React.Component {
                         // Ciclo sui Roles
                         Object.keys(group.roles).map((roleId) => {
                             let role = group.roles[roleId];
-
-                            // Ciclo sui secondary Roles
-                            return Object.keys(role.secondaryRoles).map((secondaryRoleId) => {
-                                let secondaryRole = role.secondaryRoles[secondaryRoleId];
-                                let roleAvailability = secondaryRole.avaiable[0] + '/' + role.avaiable[1] + ' avaiable';
-                                let roleObj = appStore.getStore('roles', secondaryRoleId);
-
-                                // build avaiable users object
-                                let usersAvaiable = {};
-                                secondaryRole.users.map((userId) => {
-                                    usersAvaiable[userId] = appStore.getStore('users', userId);
-                                });
-
-                                // build assigned users object
-                                let usersAssigned = {};
-                                secondaryRole.assignedUsers.map((userId) => {
-                                    usersAssigned[userId] = {
-                                        roleId: roleId,
-                                        userId: userId,
-                                        description: appStore.getStore('users', userId)
-                                    };
-                                });
-
-                                return (
-                                    <div>
-                                      <hr></hr>
-                                      <RoleAvailability
-                                          roleData={{
-                                              name: roleObj.name,
-                                              availability: roleAvailability
-                                          }}
-                                      />
-                                      <RoleDescription
-                                          description={roleObj.description}
-                                      />
-                                      <RolePersons
-                                          usersAvaiable={usersAvaiable}
-                                      />
-                                      <RolePersonsAssigned
-                                          usersAssigned={usersAssigned}
-                                      />
-                                    </div>
-                                );
-                            });
+                            let exposeSubgroups = this.exposeSubgroups(role);
+                            return (
+                                <div>{exposeSubgroups}</div>
+                            );
                         })
                     }
                 </div>
