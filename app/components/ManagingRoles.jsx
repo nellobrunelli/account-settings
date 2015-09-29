@@ -1,5 +1,6 @@
 import ContainerPrimaryRole from './ContainerPrimaryRole';
 import ContainerSecondaryRole from './ContainerSecondaryRole';
+import ContainerUsers from './ContainerUsers';
 const { Tabs, Tab } = ReactBootstrap;
 const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -58,6 +59,11 @@ export default class ManagingRoles extends React.Component {
                               marginTop: '10px'
                           }}
                           subscription={getRoles}
+                        />
+                    </Tab>
+                    <Tab eventKey={3} title="Manage Roles">
+                        <ContainerUsers
+                            subscription={getRoles}
                         />
                     </Tab>
                 </Tabs>
